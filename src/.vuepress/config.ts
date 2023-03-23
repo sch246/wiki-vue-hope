@@ -5,7 +5,19 @@ import { searchProPlugin } from "vuepress-plugin-search-pro";
 export default defineUserConfig({
   base: "/",
 
-  head: [["link", { rel: "icon", href: "/logo.svg" }]],
+  head: [
+    ["link", { rel: "icon", href: "/logo.svg" }],
+    // [
+    //   "script",{
+    //     src:"https://cdn.geogebra.org/apps/deployggb.js"
+    //   }
+    // ],
+    // [
+    //   "script",{
+    //     src:"https://kz16.top/geogebra/ggbmd.js"
+    //   }
+    // ],
+  ],
 
   lang: "zh-CN",
 

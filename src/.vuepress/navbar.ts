@@ -18,7 +18,7 @@ export const zhNavbar = navbar([
     link: "/math/"
   },
   {
-    text: "养生",
+    text: "生活",
     icon: "pepicons-pop:flower",
     link: "/life/"
   },
