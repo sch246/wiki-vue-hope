@@ -1,0 +1,69 @@
+// place your custom styles here
+
+:root {
+    --c-brand: #3ecfaa;
+    --c-brand-light: #4acfaa;
+
+    // background colors
+    --c-bg: #ffffff;
+    --c-bg-light: #f3f4f5;
+    --c-bg-lighter: #eeeeee;
+    --c-bg-navbar: var(--c-bg);
+    --c-bg-sidebar: var(--c-bg);
+    --c-bg-arrow: #cccccc;
+
+    // text colors
+    --c-text: #2c3e50;
+    --c-text-accent: var(--c-brand);
+    --c-text-light: #3a5169;
+    --c-text-lighter: #4e6e8e;
+    --c-text-lightest: #6a8bad;
+    --c-text-quote: #999999;
+
+    --c-select: #00d9d9;
+}
+
+html.dark {
+    --c-brand: #3aa675;
+    --c-brand-light: #349469;
+
+    // background colors
+    --c-bg: #22272e;
+    --c-bg-light: #2b313a;
+    --c-bg-lighter: #262c34;
+
+    // text colors
+    --c-text: #adbac7;
+    --c-text-light: #96a7b7;
+    --c-text-lighter: #8b9eb0;
+    --c-text-lightest: #8094a8;
+
+    --c-select: #00bbbb;
+}
+
+/* 文字选取颜色 */
+::selection {
+    background: var(--c-select);
+    color: var(--c-bg);
+}
+
+//你知道的太多了
+span.cover {
+    color: var(--c-text);
+    background: var(--c-text);
+    transition: color 0.1s linear;
+}
+
+span.cover a {
+    color: var(--c-text);
+    background: var(--c-text);
+    transition: color 0.1s linear;
+}
+
+span.cover:hover {
+    color: var(--c-bg);
+}
+
+span.cover a:hover {
+    color: var(--c-text-accent);
+}
