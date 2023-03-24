@@ -60,7 +60,9 @@ f()
 ```
 
 ::: warning
-需要注意的是，这个函数可能导致[调试时难以接受的慢](https://github.com/python/cpython/issues/86363)，因此在python3.11中被移除，取而代之的是函数[PyFrame_GetLocals](https://docs.python.org/3/c-api/frame.html#c.PyFrame_GetLocals)
+需要注意的是，这个函数可能导致[调试时难以接受的慢](https://github.com/python/cpython/issues/86363)，因此python3.11后，在分析或跟踪期间将不再调用它
+
+同时增加了函数[PyFrame_GetLocals](https://docs.python.org/3/c-api/frame.html#c.PyFrame_GetLocals)
 
 ![](https://s2.loli.net/2023/03/24/kl1eavHSGmfqX5w.png)
 :::
