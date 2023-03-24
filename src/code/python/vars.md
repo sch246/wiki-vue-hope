@@ -6,7 +6,7 @@ python可以用`globals()`和`locals()`来获取全局变量字典和局部变�
 
 这意味着往`globals()`内添加键将创建变量，而往`locals()`内添加键则不会
 
-当在全局作用域使用`locals()`时，行为与`globals()`一致
+在模块层级上，`locals()`与`globals()`是同一个字典
 
 ## 运行代码
 
