@@ -13,9 +13,6 @@ python在3.8版本增加了海象运算符，就是赋值语句的表达式版�
 [1 if x else 2]
 # for循环
 [print(i) for i in [1,2,3]]
-# while 循环, 需要itertools
-[exec('from itertools import takewhile as _while, repeat'),
-[(i:=0),[[print(i),(i := i+1)] for _ in takewhile(lambda _:i<10,repeat(1))],None].pop()]
 # 函数定义
 (f:=lambda x:x**2)
 # 函数及其返回值
@@ -36,6 +33,15 @@ python在3.8版本增加了海象运算符，就是赋值语句的表达式版�
 #     def __init__(self,var):
 #         self.b = var
 (A:=type('A',(),{'a':1,'__init__':(lambda self,var:(self.__setattr__('b',var)))}))
+# while 循环
+[
+    (until:=type('R',(),{
+        '__init__':lambda self, f:self.__setattr__('f',f),
+        '__iter__':lambda self: self,
+        '__next__':lambda self: None if self.f() else next(i for i in [])})),
+    (i:=0),
+    [[print(i), i:=i+1] for _ in until(lambda:i<10)],
+]
 ```
 
 写一个reduce函数并运行
@@ -57,5 +63,3 @@ print(result),
 ```
 11
 ```
-
-写一个服务端并运行
