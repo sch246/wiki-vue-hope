@@ -28,13 +28,15 @@ python 文档里有这样的一段话
 
 这是出于性能考虑所以内部似乎不是用字典存储的
 
-事实上修改这个字典也确实不会影响到实际的值
+修改这个字典也确实不会影响到实际的值
 
 不过还是有办法的
 
 网上搜索找到了这样的方案，这是[原链接](https://pydev.blogspot.com/2014/02/changing-locals-of-frame-frameflocals.html)
 
-首先使用`inspect`模块获取当前`frame`对象，修改完毕后把frame覆盖即可，作为举例，以下是一个`inc`函数
+首先使用`inspect`模块获取当前frame对象，修改完毕后用`PyFrame_LocalsToFast`把locals转换即可
+
+作为举例，以下是一个inc函数，它会修改传入字符串所对应的变量，并且对其`+=1`，影响应该会在调用这个函数的地方显现出来
 
 ```py
 import inspect, ctypes
@@ -44,8 +46,17 @@ def apply_loc(frame, replace=False):
 
 def inc(s:str):
     frame = inspect.currentframe().f_back
-    frame.f_locals()[s] += 1
+    frame.f_locals[s] += 1
     apply_loc(frame)
+
+# 测试用函数
+def f():
+    i=0
+    inc('i')
+    # 应该会打印 1
+    print(i)
+
+f()
 ```
 
 ::: warning
