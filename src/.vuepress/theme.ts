@@ -17,6 +17,8 @@ export default hopeTheme({
   repo: "sch246/wiki-vue-hope",
 
   darkmode:"toggle",
+  
+  docsBranch: "master",
 
   docsDir: "src",
 
