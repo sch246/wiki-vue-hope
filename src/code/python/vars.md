@@ -60,8 +60,6 @@ f()
 ```
 
 ::: info
-python3.11增加了函数[PyFrame_GetLocals](https://docs.python.org/3/c-api/frame.html#c.PyFrame_GetLocals)
-
 ![](https://s2.loli.net/2023/03/24/kl1eavHSGmfqX5w.png)
 :::
 
