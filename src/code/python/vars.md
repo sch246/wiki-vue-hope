@@ -2,7 +2,7 @@
 
 python可以用`globals()`和`locals()`来获取全局变量字典和局部变量字典，`vars()`的行为和`locals()`类似
 
-其中，`globals()`是实际的变量字典，而`locals()`只是引用变量字典的内容
+其中，`globals()`是实际的变量字典，而`locals()`似乎只是一种复制
 
 这意味着往`globals()`内添加键将创建变量，而往`locals()`内添加键则不会
 
