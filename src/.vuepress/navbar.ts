@@ -19,7 +19,7 @@ export const zhNavbar = navbar([
   },
   {
     text: "生活",
-    icon: "pepicons-pop:flower",
+    icon: "pepicons-pop:soft-drink",
     link: "/life/"
   },
   {
