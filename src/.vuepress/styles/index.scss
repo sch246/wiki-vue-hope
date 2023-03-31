@@ -67,3 +67,8 @@ span.cover:hover {
 span.cover a:hover {
     color: var(--c-text-accent);
 }
+
+// quote block
+blockquote {
+    border-left-width: 6px;
+}
