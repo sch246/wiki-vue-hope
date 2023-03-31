@@ -71,4 +71,11 @@ span.cover a:hover {
 // quote block
 blockquote {
     border-left-width: 6px;
+    border-color: #3ecfaa;
+    background-color: #3ecfaa17;
+}
+
+html[data-theme=dark] blockquote {
+    border-color: #3ecfaa;
+    background-color: #3ecfaa17;
 }
