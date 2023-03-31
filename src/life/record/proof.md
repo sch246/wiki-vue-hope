@@ -8,7 +8,7 @@
 
 > 小豆老师
 >
-> ![](https://gchat.qpic.cn/gchatpic_new/859345316/916083933-2713459838-500C02B783147A2D74B90D8DC17FB6B4/0?term=2&is_origin=0)
+> ![](https://s2.loli.net/2023/03/31/Fwu9seEzNdTicUS.png)
 
 > sch2333
 >
