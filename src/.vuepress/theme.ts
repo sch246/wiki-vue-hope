@@ -78,6 +78,7 @@ export default hopeTheme({
 
     // Disable features you don’t want here
     mdEnhance: {
+      attrs: true,// 启用属性
       sub: true,// 启用下角标功能
       sup: true,// 启用上角标
       tabs: true,//选项卡
@@ -97,7 +98,6 @@ export default hopeTheme({
       // 启用图片大小
       imgSize: true,
       // align: true,
-      // attrs: true,
       // chart: true,
       // codetabs: true,
       // container: true,
