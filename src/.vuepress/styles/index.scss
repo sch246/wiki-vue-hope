@@ -23,7 +23,7 @@
     --c-select: #00d9d9;
 }
 
-html.dark {
+html[data-theme=dark] {
     --c-brand: #3aa675;
     --c-brand-light: #349469;
 
