@@ -13,7 +13,7 @@
 # Download zip dataset from Google Drive
 filename=$1
 fileid=$2
-wget --load-cookies /tmp/cookies.txt "https://drive.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-sess↪ion-cookies --no-check-certificate 'https://drive.google.com/uc?export=download&id=${fileid}' -O- | sed -rn 's/.confirm=([1-9A-Za-z_]+)./\1\n/p')&i↪d=${fileid}" -O ${filename} && rm -rf /tmp/cookies.txt
+wget --load-cookies /tmp/cookies.txt "https://drive.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://drive.google.com/uc?export=download&id=${fileid}' -O- | sed -rn 's/.confirm=([1-9A-Za-z_]+)./\1\n/p')&id=${fileid}" -O ${filename} && rm -rf /tmp/cookies.txt
 ```
 
 然后这样调用，最好在screen下面，这样就能撒手不管了
