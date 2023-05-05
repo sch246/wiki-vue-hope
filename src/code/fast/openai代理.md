@@ -96,4 +96,6 @@ sudo nginx -t
 sudo systemctl reload nginx
 ```
 
-现在您的Nginx已经配置为将`proxy.sch246.io`的请求代理到`api.openai.com`。请确保您的域名DNS已正确指向Ubuntu服务器的IP地址。如果您还没有为`proxy.sch246.io`配置SSL证书，建议使用Let's Encrypt的免费证书，以便启用HTTPS。您可以参考[这个教程](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04)来配置Let's Encrypt。
+现在您的Nginx已经配置为将`yourdomain.com`的请求代理到`api.openai.com`。请确保您的域名DNS已正确指向Ubuntu服务器的IP地址。
+
+如果您还没有为`yourdomain.com`配置SSL证书，建议使用Let's Encrypt的免费证书，以便启用HTTPS。您可以参考[这个教程](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04)来配置Let's Encrypt。
