@@ -18,7 +18,7 @@ sudo apt-get install nginx
 由GPT4生成大部分内容
 
 创建一个新的Nginx配置文件，例如`/etc/nginx/sites-available/openai-proxy`：
-```
+```sh
 sudo nano /etc/nginx/sites-available/openai-proxy
 ```
 
@@ -77,22 +77,22 @@ server {
 保存并关闭文件。
 
 为配置文件创建一个符号链接，使其在`sites-enabled`目录中可用：
-```
+```sh
 sudo ln -s /etc/nginx/sites-available/openai-proxy /etc/nginx/sites-enabled/
 ```
 
 删除默认的Nginx配置文件链接：
-```
+```sh
 sudo rm /etc/nginx/sites-enabled/default
 ```
 
 为了确保没有配置错误，测试Nginx配置：
-```
+```sh
 sudo nginx -t
 ```
 
 如果测试成功，则重新加载Nginx配置：
-```
+```sh
 sudo systemctl reload nginx
 ```
 
