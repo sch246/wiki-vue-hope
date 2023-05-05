@@ -130,7 +130,7 @@ server {
 
 反向代理需要 SSL 证书才能工作
 
-- [ssl证书](/code/fast/ssl.html)
+@include(./ssl.md{2-68})
 
 ## 数据库
 
