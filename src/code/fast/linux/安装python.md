@@ -8,6 +8,24 @@
 
 ## 下载编译安装 openssl
 
+::: details 首先确认是否有已安装的openssl
+
+```sh
+find /usr -name "openssl"
+```
+
+应该能看到类似 `/usr/local/openssl` 或 `/usr/include/openssl` 的路径。需要选择包含 `include` 和 `lib` 子目录的路径。
+
+如果有的话，确认可用性，假设是`/usr/local/openssl/`
+
+```sh
+/usr/local/openssl/bin/openssl version
+```
+
+若成功，跳过步骤
+
+:::
+
 下载地址: [https://www.openssl.org/source/](https://www.openssl.org/source/)
 
 ```bash
@@ -24,12 +42,43 @@ make
 make install
 ```
 
+确认安装是否成功
+
+```sh
+/usr/local/openssl/bin/openssl version
+```
+
+:::: info
+如果遇到了问题`/usr/local/openssl/bin/openssl: relocation error: /usr/local/openssl/bin/openssl: symbol EVP_mdc2 version OPENSSL_1_1_0 notypto.so.1.1 with link time reference`，这可能是因为系统上存在多个 OpenSSL 版本，导致链接时引用了错误的库文件
+可以把原来的openssl删掉
+或者更新环境变量
+```sh
+echo 'export PATH="/usr/local/openssl/bin:$PATH"' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH="/usr/local/openssl/lib:$LD_LIBRARY_PATH"' >> ~/.bashrc
+echo 'export PKG_CONFIG_PATH="/usr/local/openssl/lib/pkgconfig:$PKG_CONFIG_PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+或者，GPT提供了使用当前安装的openssl的方式，但是我用了好像没用
+:::details
+如果您的库文件位于 /usr/lib/x86_64-linux-gnu，头文件位于 /usr/include/openssl，则可以这样设置：
+```sh
+export LDFLAGS="-L/usr/lib/x86_64-linux-gnu"
+export CPPFLAGS="-I/usr/include/openssl"
+```
+:::
+::::
+
 ## 安装python
 
 ```
 ./configure --prefix=/usr/local/python3 --enable-optimizations --with-openssl=/usr/local/openssl
 make && make install
 ```
+
+::: info
+后来遇到了`ModuleNotFoundError: No module named '_sqlite3'`
+根据 GPT 的提醒，可以加上参数`--enable-loadable-sqlite-extensions`
+:::
 
 出现报错，`ModuleNotFoundError: No module named 'zlib'`
 
