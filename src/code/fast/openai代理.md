@@ -11,7 +11,7 @@ sudo apt-get install nginx
 
 如果不需要 https，那么可以跳过这步
 
-<!-- @include: ./code/fast/ssl.md{2-68} -->
+- [ssl证书](/code/fast/ssl.html)
 
 ## 配置
 
