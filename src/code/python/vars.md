@@ -60,6 +60,6 @@ f()
 ```
 
 ::: info
-![](https://s2.loli.net/2023/03/24/kl1eavHSGmfqX5w.png)
+![2023-03-24-msedge_6t.png](https://s2.loli.net/2023/03/24/kl1eavHSGmfqX5w.png)
 :::
 
