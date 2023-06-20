@@ -62,11 +62,37 @@ BRANCH=$(git rev-parse --symbolic --abbrev-ref $1)
 GIT_WORK_TREE=$WORK_DIR git checkout -f $BRANCH
 ```
 
-请注意，需要将 `WORK_DIR` 替换为服务器上的工作目录的路径。
+::: details 我给 mc 资源包设置的钩子
 
-还需要将 `BRANCH` 设置为您要推送到服务器上的分支的名称。
+```sh
+#!/bin/bash
+
+# Location of the working directory on the server
+WORK_DIR=/opt/resource
+OUT_ZIP=/opt/resource.zip
+
+# Branch that was pushed
+BRANCH=$(git rev-parse --symbolic --abbrev-ref $1)
+
+# Git checkout the branch that was pushed
+GIT_WORK_TREE=$WORK_DIR git checkout -f $BRANCH
+
+rm $OUT_ZIP
+cd $WORK_DIR
+zip -r $OUT_ZIP . -x ".git*"
+```
+
+:::
+
+请注意，需要将 `/path/to/working/directory` 替换为服务器上的工作目录的路径。
 
 脚本将检查该分支的最新提交，并使用 `git checkout` 命令将更改应用到工作目录中。
+
+添加权限
+
+```sh
+chmod +x .git/hooks/post-receive
+```
 
 ## 客户端
 
