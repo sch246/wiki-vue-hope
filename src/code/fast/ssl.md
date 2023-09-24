@@ -6,6 +6,12 @@
 sudo apt install certbot
 ```
 
+这个命令将列出所有的证书，包括其域名、到期日期、证书路径等信息。
+
+```sh
+certbot certificates
+```
+
 生成证书，有效期三个月，你可以在快到期时重新生成证书，记得替换域名
 
 - [Certbot命令行工具使用说明](https://www.cnblogs.com/dancesir/p/14329327.html)
