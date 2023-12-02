@@ -1,6 +1,10 @@
 # ssl证书
 
-可以通过使用 certbot 获得免费的 SSL 证书
+建议使用acme.sh
+
+- [acme.sh中文说明](https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E)
+
+:::: details 可以通过使用 certbot 获得免费的 SSL 证书
 
 ```sh
 sudo apt install certbot
@@ -73,3 +77,4 @@ sudo crontab -e
 
 :::
 
+::::
