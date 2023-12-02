@@ -54,7 +54,7 @@ sudo certbot renew --nginx --dry-run
 ```
 
 - `--nginx`表示使用 nginx 插件进行更新
-  - `apt-get install certbot python-certbot-nginx`
+  - `apt install python3-certbot-nginx`
 
 这将执行一个模拟运行，以确保在实际更新证书之前，一切都可以正常工作。
 
