@@ -16,7 +16,7 @@ apt install aria2
 
 这是一个示例
 
-``` title='/root/.aria2/aria2.conf'
+``` /root/.aria2/aria2.conf
 rpc-secret=<密码>
 enable-rpc=true
 rpc-listen-all=true
