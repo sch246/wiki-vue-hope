@@ -13,7 +13,36 @@ curl https://get.acme.sh | sh -s email=my@example.com
 acme.sh --issue -d mydomain.com --standalone
 ```
 
-:::: details 可以通过使用 certbot 获得免费的 SSL 证书
+它生成了几个文件，其中3个是证书文件，一个是证书密钥，fullchain包含了另外2个证书文件
+
+对于nginx可以这样填
+
+```conf
+server {
+    listen 443 ssl;
+    server_name mydomain.com;
+
+    ssl_certificate /root/.acme.sh/mydomain.com_ecc/fullchain.cer;
+    ssl_certificate_key /root/.acme.sh/mydomain.com_ecc/mydomain.com.key;
+
+  location / {
+    proxy_pass https://localhost:5173;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+
+    // 如果要支持wss
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+}
+
+}
+```
+
+
+:::: details 可以使用 certbot 获得免费的 SSL 证书
 
 ```sh
 sudo apt install certbot
