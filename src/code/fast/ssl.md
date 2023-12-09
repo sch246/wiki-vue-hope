@@ -4,6 +4,15 @@
 
 - [acme.sh中文说明](https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E)
 
+```sh
+# 如果采用standalone，需要先安装socat以支持
+apt install socat
+# 安装
+curl https://get.acme.sh | sh -s email=my@example.com
+# 如果80端口空闲，则直接生成，记得替换mydomain.com
+acme.sh --issue -d mydomain.com --standalone
+```
+
 :::: details 可以通过使用 certbot 获得免费的 SSL 证书
 
 ```sh
@@ -78,3 +87,5 @@ sudo crontab -e
 :::
 
 ::::
+
+
