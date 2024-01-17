@@ -7,6 +7,7 @@ export default defineUserConfig({
 
   head: [
     ["link", { rel: "icon", href: "/logo.svg" }],
+
     // [
     //   "script",{
     //     src:"https://cdn.geogebra.org/apps/deployggb.js"
