@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@vuepress/client": "2.0.0-rc.0",
+    "@waline/client": "3.0.0-alpha.10",
     "flowchart.ts": "^3.0.0",
     "katex": "^0.16.9",
     "mermaid": "^10.7.0",

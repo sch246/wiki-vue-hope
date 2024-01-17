@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, defineProps } from 'vue';
+import { ref, onMounted } from 'vue';
 
 // 定义接收的 prop
 const props = defineProps({
