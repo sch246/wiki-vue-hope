@@ -1,6 +1,6 @@
 import { sidebar } from "vuepress-theme-hope";
 
-export const zhSidebar = sidebar({
+export default sidebar({
   "/code/": "structure",
   "/python/": "structure",
   "/game/": "structure",

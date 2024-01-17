@@ -1,6 +1,6 @@
 import { hopeTheme } from "vuepress-theme-hope";
-import { zhNavbar } from "./navbar";
-import { zhSidebar } from "./sidebar";
+import navbar from "./navbar.js";
+import sidebar from "./sidebar.js";
 
 export default hopeTheme({
   hostname: "https://sch246.com",
@@ -16,108 +16,67 @@ export default hopeTheme({
 
   repo: "sch246/wiki-vue-hope",
 
+  //
   darkmode:"toggle",
-  
+
   docsBranch: "master",
+
+  pageInfo: ["Original", "Date", "Category", "Tag", "ReadingTime"],
+  //
 
   docsDir: "src",
 
-  pageInfo: ["Original", "Date", "Category", "Tag", "ReadingTime"],
+  // 导航栏
+  navbar,
 
-  // navbar
-  navbar: zhNavbar,
+  // 侧边栏
+  sidebar,
 
-  // sidebar
-  sidebar: zhSidebar,
-
+  // 页脚
   footer: "",
-
   displayFooter: true,
 
-  hotReload:true,
 
-  // page meta
+  // 加密配置
+  // encrypt: {
+  //   config: {
+  //     "/demo/encrypt.html": ["1234"],
+  //   },
+  // },
+
+  // 多语言配置
   metaLocales: {
     editLink: "在 GitHub 上编辑此页",
   },
 
+  // 如果想要实时查看任何改变，启用它。注: 这对更新性能有很大负面影响
+  // hotReload: true,
 
-  encrypt: {
-    config: {
-      "/demo/encrypt.html": ["1234"],
-      "/zh/demo/encrypt.html": ["1234"],
-    },
-  },
-
+  // 在这里配置主题提供的插件
   plugins: {
-    // If you don’t need comment feature, you can remove following option
-    // The following config is for demo ONLY, if you need comment feature, please generate and use your own config, see comment plugin documentation for details.
-    // To avoid disturbing the theme developer and consuming his resources, please DO NOT use the following config directly in your production environment!!!!!
+    // 你应该自行生成自己的评论服务
     comment: {
-      /**
-       * Using Giscus
-       */
-      // provider: "Giscus",
-      // repo: "vuepress-theme-hope/giscus-discussions",
-      // repoId: "R_kgDOG_Pt2A",
-      // category: "Announcements",
-      // categoryId: "DIC_kwDOG_Pt2M4COD69",
-
-      /**
-       * Using Twikoo
-       */
-      // provider: "Twikoo",
-      // envId: "https://twikoo.ccknbc.vercel.app",
-
-      /**
-       * Using Waline
-       */
       provider: "Waline",
       serverURL: "https://waline.sch246.com",
     },
 
-    // Disable features you don’t want here
+    components: {
+      components: ["Badge", "VPCard"],
+    },
+
+    // 此处开启了很多功能用于演示，你应仅保留用到的功能。
     mdEnhance: {
-      attrs: true,// 启用属性
-      sub: true,// 启用下角标功能
-      sup: true,// 启用上角标
-      tabs: true,//选项卡
-      codetabs: true,//代码块分组
-      tasklist: true,//任务列表
-      include: true,//文件导入
       align: true,//居中和靠右
-      katex: true,//latex
-      flowchart: true,//流程图
-      mermaid: true,//mermaid
-      // 启用 figure(图片)
-      figure: true,
-      // 启用图片懒加载
-      imgLazyload: true,
-      // 启用图片标记
-      imgMark: true,
-      // 启用图片大小
-      imgSize: true,
-      // align: true,
-      // chart: true,
-      // codetabs: true,
-      // container: true,
+      attrs: true,// 启用属性
+      codetabs: true,//代码块分组
+      component: true,//插入vue组件
       // demo: true,
-      // echarts: true,
-      // figure: true,
-      // flowchart: true,
-      // gfm: true,
-      // imageLazyload: true,
-      // imageSize: true,
-      // include: true,
-      // katex: true,
-      // mark: true,
-      // mermaid: true,
-      // playground: {
-      //   presets: ["ts", "vue"],
-      // },
-      // presentation: {
-      //   plugins: ["highlight", "math", "search", "notes", "zoom"],
-      // },
+      figure: true,// 启用 figure(图片)
+      imgLazyload: true,// 启用图片懒加载
+      imgMark: true,// 启用图片标记?
+      imgSize: true,// 启用图片大小
+      include: true,//文件导入
+      // mark: true,//使用 ==进行标记== 
       // stylize: [
       //   {
       //     matcher: "Recommended",
@@ -131,14 +90,52 @@ export default hopeTheme({
       //     },
       //   },
       // ],
-      // sub: true,
-      // sup: true,
-      // tabs: true,
+      sub: true,// 启用下角标
+      sup: true,// 启用上角标
+      tabs: true,//选项卡
+      //? tasklist: true,//任务列表
       // vPre: true,
+
+      // 在启用之前安装 chart.js
+      // chart: true,
+
+      // insert component easily
+
+      // 在启用之前安装 echarts
+      // echarts: true,
+
+      // 在启用之前安装 flowchart.ts
+      flowchart: true,
+
+      // gfm requires mathjax-full to provide tex support
+      // gfm: true,
+
+      // 在启用之前安装 katex
+      katex: true,
+
+      // 在启用之前安装 mathjax-full
+      // mathjax: true,
+
+      // 在启用之前安装 mermaid
+      mermaid: true,
+
+      // playground: {
+      //   presets: ["ts", "vue"],
+      // },
+
+      // 在启用之前安装 reveal.js
+      // revealJs: {
+      //   plugins: ["highlight", "math", "search", "notes", "zoom"],
+      // },
+
+      // 在启用之前安装 @vue/repl
       // vuePlayground: true,
+
+      // install sandpack-vue3 before enabling it
+      // sandpack: true,
     },
 
-    // uncomment these if you want a pwa
+    // 如果你需要 PWA。安装 vuepress-plugin-pwa2 并取消下方注释
     // pwa: {
     //   favicon: "/favicon.ico",
     //   cacheHTML: true,
@@ -187,12 +184,6 @@ export default hopeTheme({
     //             src: "/assets/icon/guide-maskable.png",
     //             sizes: "192x192",
     //             purpose: "maskable",
-    //             type: "image/png",
-    //           },
-    //           {
-    //             src: "/assets/icon/guide-monochrome.png",
-    //             sizes: "192x192",
-    //             purpose: "monochrome",
     //             type: "image/png",
     //           },
     //         ],

@@ -10,7 +10,7 @@ order: 1
 
 ## 安装node
 
-@include(../fast/linux/nodejs.md{2-})
+<!-- @include: ../fast/linux/nodejs.md{2-} -->
 
 ## 安装nginx
 
@@ -40,5 +40,4 @@ systemctl enable nginx
 
 注意这里只能填localhost不能填127.0.0.1，我也不知道为什么
 
-@include(../fast/ssl.md{2-})
-
+<!-- @include: ../fast/ssl.md{2-} -->
