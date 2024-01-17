@@ -21,14 +21,16 @@ const props = defineProps({
 const rootElement = ref(null);
 
 onMounted(() => {
-  if (rootElement.value && rootElement.value.children.length===0) {
+  const root = rootElement.value
+  if (root && !root.getAttribute('inited')) {
+    root.setAttribute('inited', '1')
     let script = document.createElement('script');
     script.type = 'py-editor';
     if (props.env){
       script.setAttribute('env', props.env)
     }
     script.textContent = props.scriptContent;  // 使用传入的 prop
-    rootElement.value.appendChild(script);
+    root.appendChild(script);
   }
 });
 </script>
