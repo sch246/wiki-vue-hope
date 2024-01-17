@@ -1,23 +1,28 @@
 <template>
-    <div>
-      <div id="editor"></div>
-    </div>
-  </template>
+  <div ref="rootElement">
+    <!-- 组件的内容 -->
+  </div>
+</template>
 
-<script>
-export default {
-mounted() {
-    // 创建script标签
+<script setup>
+import { ref, onMounted, defineProps } from 'vue';
+
+// 定义接收的 prop
+const props = defineProps({
+  scriptContent: {
+    type: String,
+    default: ''
+  }
+});
+
+const rootElement = ref(null);
+
+onMounted(() => {
+  if (rootElement.value) {
     let script = document.createElement('script');
     script.type = 'py-editor';
-    script.setAttribute('target', 'editor');
-    script.textContent = `
-import sys
-print(sys.version)
-`;
-
-    // 将script标签添加到DOM中
-    this.$el.appendChild(script);
-}
-}
+    script.textContent = props.scriptContent;  // 使用传入的 prop
+    rootElement.value.appendChild(script);
+  }
+});
 </script>
