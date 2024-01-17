@@ -32,14 +32,21 @@ export default defineUserConfig({
       let a = md.renderer.rules.fence
       md.renderer.rules.fence = function(tokens, idx, options, env, self) {
         const token = tokens[idx];
+        const info = token.info.trim()
         // 检查语言是否为 "py edit"
-        if (token.info.trim() === 'py edit' || token.info.trim() === 'python edit') {
-            // 转义单引号，并替换换行符
-            const scriptContent = token.content
-                                    .replace(/'/g, "\\'")
-                                    .replace(/\n/g, '\\n');
-            // 返回定制的 PyScriptEditor 组件
+        if (info.startsWith('py edit') || info.startsWith('python edit')) {
+          // 转义单引号，并替换换行符
+          const scriptContent = token.content
+                                .replace(/'/g, "\\'")
+                                .replace(/\n/g, '\\n');
+
+          // 返回定制的 PyScriptEditor 组件
+          const infos = info.split(/\s+/)
+          if (infos.length>2){
+            return `<PyScriptEditor :scriptContent="'${scriptContent}'" env="${infos[2]}" />`;
+          } else {
             return `<PyScriptEditor :scriptContent="'${scriptContent}'" />`;
+          }
         }
         // 默认渲染方式
         let b = a ?? self.renderToken
