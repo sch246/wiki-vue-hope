@@ -21,6 +21,7 @@ onMounted(() => {
   if (rootElement.value) {
     let script = document.createElement('script');
     script.type = 'py-editor';
+    script.env = 'shared'
     script.textContent = props.scriptContent;  // 使用传入的 prop
     rootElement.value.appendChild(script);
   }
