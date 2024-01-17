@@ -29,6 +29,7 @@ export default defineUserConfig({
         /##(.+)##/g,
         '<span title="你知道的太多了" class="cover">$1</span>'
       );
+      let a = md.renderer.rules.fence
       md.renderer.rules.fence = function(tokens, idx, options, env, self) {
         const token = tokens[idx];
         // 检查语言是否为 "py edit"
@@ -41,7 +42,8 @@ export default defineUserConfig({
             return `<PyScriptEditor :scriptContent="'${scriptContent}'" />`;
         }
         // 默认渲染方式
-        return self.renderToken(tokens, idx, options);
+        let b = a ?? self.renderToken
+        return b(tokens, idx, options, env, self);
       };
   },
 
