@@ -1,6 +1,5 @@
 <template>
   <div ref="rootElement">
-    <!-- 组件的内容 -->
   </div>
 </template>
 
@@ -22,7 +21,7 @@ const props = defineProps({
 const rootElement = ref(null);
 
 onMounted(() => {
-  if (rootElement.value) {
+  if (rootElement.value && rootElement.value.children.length===0) {
     let script = document.createElement('script');
     script.type = 'py-editor';
     if (props.env){
