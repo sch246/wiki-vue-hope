@@ -17,12 +17,8 @@ export default defineClientConfig({
                 });
                 newScript.innerHTML = script.innerHTML;
                 if (script.parentNode){
-                    console.log(newScript, ', ', script)
-                    try{
-                        script.parentNode.replaceChild(newScript, script);
-                    } catch (error){
-                        console.log(error)
-                    }
+                    script.parentNode.insertBefore(newScript, script);
+                    script.parentNode.removeChild(script)
                 }
             });
         })
