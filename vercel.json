@@ -1,7 +1,7 @@
 {
     "headers": [
         {
-            "source": "/python/(.*)",
+            "source": "/python/([0-9]+.*)",
             "headers": [
                 {
                     "key": "Cross-Origin-Embedder-Policy",
