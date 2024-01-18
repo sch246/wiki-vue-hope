@@ -43,14 +43,14 @@ export default defineUserConfig({
           // 返回定制的 PyScriptEditor 组件
           const infos = info.split(/\s+/)
           if (infos.length>2){
-            return `<PyScriptEditor :scriptContent="'${scriptContent}'" env="${infos[2]}" />`;
+            return `<pre type="py-editor" env="${infos[2]}">${token.content}</pre>`
           } else {
-            return `<PyScriptEditor :scriptContent="'${scriptContent}'" />`;
+            return `<pre type="py-editor">${token.content}</pre>`
           }
           // if (infos.length>2){
-          //   return `<pre el="script" type="py-editor" env="${infos[2]}">${token.content}</pre>`
+          //   return `<PyScriptEditor :scriptContent="'${scriptContent}'" env="${infos[2]}" />`;
           // } else {
-          //   return `<pre el="script" type="py-editor">${token.content}</pre>`
+          //   return `<PyScriptEditor :scriptContent="'${scriptContent}'" />`;
           // }
         }
         // 默认渲染方式
