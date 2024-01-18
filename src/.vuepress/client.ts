@@ -4,7 +4,9 @@ import {onMounted} from 'vue'
 export default defineClientConfig({
     enhance({ app, router, siteData }) {},
     setup() {
+        console.log('init')
         onMounted(()=>{
+            console.log('run')
             const scripts = document.querySelectorAll('pre');
             scripts.forEach(script => {
                 const el = script.getAttribute('el')
