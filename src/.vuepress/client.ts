@@ -4,15 +4,15 @@ import {onMounted} from 'vue'
 export default defineClientConfig({
     enhance({ app, router, siteData }) {},
     setup() {
-        console.log('init')
         onMounted(()=>{
-            console.log('run')
             const scripts = document.querySelectorAll('pre');
             scripts.forEach(script => {
+                console.log('run')
                 const el = script.getAttribute('el')
                 if (!el){
                     return
                 }
+                console.log('next')
                 const newScript = document.createElement(el);
                 Array.from(script.attributes).forEach(attr => {
                     newScript.setAttribute(attr.name, attr.value);
