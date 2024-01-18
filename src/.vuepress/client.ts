@@ -18,7 +18,11 @@ export default defineClientConfig({
                 newScript.innerHTML = script.innerHTML;
                 if (script.parentNode){
                     console.log(newScript, ', ', script)
-                    script.parentNode.replaceChild(newScript, script);
+                    try{
+                        script.parentNode.replaceChild(newScript, script);
+                    } catch (error){
+                        console.log(error)
+                    }
                 }
             });
         })
