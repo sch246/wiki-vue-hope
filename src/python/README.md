@@ -21,6 +21,3 @@ Please read requirements in MDN: https://developer.mozilla.org/en-US/docs/Web/Ja
 
 :::
 
-进入页面后，加载比较慢时会出现多个代码框，点刷新重新加载，还是会有很多代码框
-
-在侧边栏跳转一下就行了
