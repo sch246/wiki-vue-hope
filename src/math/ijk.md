@@ -166,7 +166,7 @@ $xu = (cos\theta+I_xsin\theta)V_u=V_ucos\theta+(- I_x \cdot V_u + I_x \times V_u
 
 我们用 $quq^{-1}, q=cos\theta+I_qsin\theta$ 来表示让 $u$ 绕 $I_q$ 按右手定则旋转 $2\theta$, 记为 $\phi_q(u)$
 
-$q^{-1}$ 的影响是将影响还原，由于这里仅涉及旋转，把 $\theta$ 变成 $-\theta$ 即可
+$-1$ 次方的含义是将影响还原，由于这里仅涉及旋转，把 $\theta$ 变成 $-\theta$ 即可
 
 我们看看左乘变成右乘有什么变化
 
