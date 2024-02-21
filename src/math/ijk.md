@@ -108,7 +108,7 @@ $V_xV_y$
 
 若虚数单位相同，则变成 $-1$, 且值相乘, 于是有 $- V_x \cdot V_y$
 
-若虚数单位不同，则按照顺序，$\begin{matrix}ij \rightarrow k\\jk \rightarrow i\\ki \rightarrow j\end{matrix}$，$\begin{matrix}ij \rightarrow k\\jk \rightarrow i\\ki \rightarrow j\end{matrix}$, 恰好等价于 $\begin{vmatrix}i&j&k\\x_1&x_2&x_3\\y_1&y_2&y_3\end{vmatrix}$, 恰好是 $V_x \times V_y$
+若虚数单位不同，则按照顺序，$\begin{matrix}ij \rightarrow k\\jk \rightarrow i\\ki \rightarrow j\end{matrix}$，恰好等价于 $\begin{vmatrix}i&j&k\\x_1&x_2&x_3\\y_1&y_2&y_3\end{vmatrix}$, 恰好是 $V_x \times V_y$
 
 于是
 
