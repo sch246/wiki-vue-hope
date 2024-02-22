@@ -46,19 +46,19 @@ $i(a+bi) = -b + ai$
 
 $i$ 的作用就是将任意复数(向量) ，围绕原点，按照 $1 \rightarrow i$ 的方向旋转 90 度
 
-### 关于任意复数 $x=x_1+x_2i$ 对任意复数 $u=u_1+u_2i$ 的作用
+### 关于任意复数 $q=q_1+q_2i$ 对任意复数 $u=u_1+u_2i$ 的作用
 
-$x(u_1+u_2i)=(xu_1+xu_2i)$
+$q(u_1+u_2i)=(qu_1+qu_2i)$
 
-等价于以 $\{x, xi\}$ 为基向量表示 $(u_1, u_2)$
+等价于以 $\{q, qi\}$ 为基向量表示 $(u_1, u_2)$
 
-$(x_1+x_2i)u=(x_1u+x_2iu)$
+$(q_1+q_2i)u=(q_1u+q_2iu)$
 
-等价于以 $\{u, ui\}$ 为基向量表示 $(x_1, x_2)$
+等价于以 $\{u, ui\}$ 为基向量表示 $(q_1, q_2)$
 
-任意复数 $x$ 的作用，就是将任意复数，按照 $1 \rightarrow x$ 的方向旋转并放缩
+任意复数 $q$ 的作用，就是将任意复数，按照 $1 \rightarrow q$ 的方向旋转并放缩
 
-在单位圆上的复数 $x=cos\theta+isin\theta$ ，作用就是将任意复数按照 $1 \rightarrow i$ 的方向旋转 $\theta$
+在单位圆上的复数 $qu=(cos\theta+isin\theta)u$ 可以理解为，找到 $u$ 方向，和 $iu$ 方向，用横坐标($cos\theta$)去乘 $u$, 用纵坐标($sin\theta$)去乘 $iu$, 就是将 $u$ 向 $iu$ 旋转 $\theta$
 
 ## 四元数
 
@@ -74,9 +74,9 @@ $\begin{matrix}ij = k\\jk = i\\ki = j\end{matrix}$
 
 $\begin{matrix}ji = -k\\kj = -i\\ik = -j\end{matrix}$
 
-$\{1,i,j,k\}$ 相互垂直，构成四维空间，以 $\{i,j,k\}$ 组成三维空间，将实数轴隐藏起来，我们能描述四维旋转
+$\{1,i,j,k\}$ 相互垂直，构成四维空间，以 $\{i,j,k\}$ 按照右手标架组成三维空间，将实数轴隐藏起来，我们能描述四维旋转
 
-### 关于 $i/j/k$ 的作用
+### 关于 i/j/k 的作用
 
 $i(w+xi+yj+zk)=-x+wi-zj+yk$
 
@@ -88,37 +88,71 @@ $\begin{matrix}i\\j\\k\end{matrix}$ 的作用就是将任意四元数(向量)
 
 在 $\{\begin{matrix}1, i\\1, j\\1, k\end{matrix}\}$ 平面内的分量，围绕原点，按照 $\begin{matrix}1 \rightarrow i\\1 \rightarrow j\\1 \rightarrow k\end{matrix}$ 的方向旋转 90 度
 
-在 $\{\begin{matrix}j\\k\\i\end{matrix}, \begin{matrix}k\\i\\j\end{matrix}\}$ 平面内的分量，围绕原点，按照 $\begin{matrix}j \rightarrow k\\k \rightarrow i\\i \rightarrow j\end{matrix}$ 的方向旋转 90 度
+在 $\{\begin{matrix}j\\k\\i\end{matrix}, \begin{matrix}k\\i\\j\end{matrix}\}$ 平面内的分量，围绕原点，按照 $\begin{matrix}j \rightarrow k\\k \rightarrow i\\i \rightarrow j\end{matrix}$ 的方向旋转 90 度，也就是按照右手定则旋转它的法平面
 
 之后再把分量重新加起来即可
 
-### 任意四元数乘任意四元数
+这其实也对应了四元数的定义
+
+如果想要旋转任意角度，对于 $h=i,j,k$，只需要使用 $cos\theta+hsin\theta$ 的形式即可
+
+对于 $\{1,h\}$ 和与其垂直的平面 $W_h$(在这里是 $1,i,j,k$ 中剩下两个基向量组成的平面) 内的 $u$
+
+找到 $u$ 方向，和 $hu$ 方向，用横坐标($cos\theta$)去乘 $u$, 用纵坐标($sin\theta$)去乘 $hu$, 就是将 $u$ 向 $hu$ 旋转 $\theta$
+
+由于对于每个 $h$，所有四元数都可以分解为这两个平面上向量的和，所以它可以应用到所有四元数上，它作用于一般四元数，表现为两个旋转的组合
+
+这就是四维双旋转
+
+事实上，这对单位球面上的任意四元数都成立，即只要满足 $h^2=-1$ 即可
+
+使用单位超球面上的 $q=cos\theta+hsin\theta$, 就可以对任意四元数进行任意角度的四维双旋转
+
+### 任意四元数相乘
 
 计算
 
-$(x_0+x_1i+x_2j+x_3k)(y_0+y_1i+y_2j+y_3k)$
+$(q_0+q_1i+q_2j+q_3k)(u_0+u_1i+u_2j+u_3k)$
 
-将虚数部分用向量表示 $V_x=x_1i+x_2j+x_3k, V_y=y_1i+y_2j+y_3k$
+将虚数部分用向量表示 $V_q=q_1i+q_2j+q_3k, V_u=u_1i+u_2j+u_3k$
 
-则原式 $=(x_0+V_x)(y_0+V_y)=x_0y_0+x_0V_y+V_xy_0+V_xV_y$
+则原式 $=(q_0+V_q)(u_0+V_u)=q_0u_0+q_0V_u+V_qu_0+V_qV_u$
 
 接下来按照乘法分配律，计算
 
-$V_xV_y$
+$V_qV_u$
 
-若虚数单位相同，则变成 $-1$, 且值相乘, 于是有 $- V_x \cdot V_y$
+若虚数单位相同，则变成 $-1$, 且值相乘, 于是有 $- V_q \cdot V_u$
 
-若虚数单位不同，则按照顺序，$\begin{matrix}ij \rightarrow k\\jk \rightarrow i\\ki \rightarrow j\end{matrix}$，恰好等价于 $\begin{vmatrix}i&j&k\\x_1&x_2&x_3\\y_1&y_2&y_3\end{vmatrix}$, 恰好是 $V_x \times V_y$
-
-于是
-
-$V_xV_y = - V_x \cdot V_y + V_x \times V_y$
+若虚数单位不同，则按照顺序，$\begin{matrix}ij \rightarrow k\\jk \rightarrow i\\ki \rightarrow j\end{matrix}$，恰好等价于 $\begin{vmatrix}i&j&k\\q_1&q_2&q_3\\u_1&u_2&u_3\end{vmatrix}$, 恰好是 $V_q \times V_u$
 
 于是
 
-$xy = (x_0+V_x)(y_0+V_y)=x_0y_0+x_0V_y+V_xy_0- V_x \cdot V_y + V_x \times V_y$
+$V_qV_u = - V_q \cdot V_u + V_q \times V_u$
 
-### 单位球面上的四元数对任意向量的作用
+于是
+
+$qu = (q_0+V_q)(u_0+V_u)=q_0u_0+q_0V_u+V_qu_0- V_q \cdot V_u + V_q \times V_u$
+
+### 单位超球面上四元数的作用
+
+设 $q=cos\theta+hsin\theta$, 其中 $h$ 是 $\{i,j,k\}$ 单位球面上的点，满足 $h^2=-1$
+
+设 $u=u_0+u_hh+V_u$，其中 $V_u$ 垂直于 $\{1,h\}$
+
+于是
+
+$qu = (cos\theta+hsin\theta)(u_0+u_hh+V_u)$
+
+$=(cos\theta+hsin\theta)(u_0+u_hh)+(cos\theta+hsin\theta)V_u$
+
+由于 $h^2=-1$，$(cos\theta+hsin\theta)(u_0+u_hh)$ 就和正常的复数旋转一样
+
+由于 $V_u$ 垂直于 $\{1,h\}$，$h \cdot V_u=0$
+
+$(cos\theta+hsin\theta)V_u=V_u cos\theta + h \times V_usin\theta$ 也确实是按照右手定则旋转
+
+## 四元数旋转
 
 用单位球面上的向量是没法表示一个完整的三维旋转的
 
@@ -126,45 +160,11 @@ $xy = (x_0+V_x)(y_0+V_y)=x_0y_0+x_0V_y+V_xy_0- V_x \cdot V_y + V_x \times V_y$
 
 当然，可以把最后一个量存储在模长上
 
-对于四元数表示的旋转，我们要旋转的目标向量是 $\{i,j,k\}$ 上的向量 $u$
+对于四元数表示的旋转，我们要旋转的目标向量是实部为 0, $\{i,j,k\}$ 上的向量 $u$
 
-当取 $\{i,j,k\}$ 单位球面上的四元数 $x$ 时
+现在的作用会让它在 $\{1,h\}$ 上有多余的旋转, 我们需要抵消这个旋转
 
-它长度为 $1$ 且垂直于实数轴，所以有 $x^2=-1$, $\{1,x\}$ 的性质与 $\{1,i\}$ 等的性质一样, $\{1,x\}$ 上的向量乘以 $x$ 的作用是, 按照 $1 \rightarrow x$ 的方向旋转 90 度
-
-$\{i,j,k\}$ 上以 $x$ 为法向量的平面，记为 $W_x$ ，是与 $\{1,x\}$ 垂直的平面（两平面上的任何向量相互垂直，这可是在四维空间才能发生的）
-
-任意四元数可以分解为 $\{1,x\}, W_x$ 这两个平面上的向量的组合
-
-$xu = V_xV_u=- V_x \cdot V_u + V_x \times V_u$
-
-对于在 $\{1,x\}$ 上的 $u$, 等价于按照 $1 \rightarrow x$ 的方向旋转 90 度
-
-对于在 $W_x$ 上的 $u$，$V_x \cdot V_u=0$，于是 $xu=V_x \times V_u$, 按照叉乘的性质，会按照右手定则旋转 90 度
-
-其它向量都可以分解为这两个平面上的分量，分别作用后再组合
-
-### 单位超球面上的四元数对任意向量的作用
-
-如果想要旋转任意度数呢？
-
-四元数用 3 个虚数单位的分量表示旋转轴，用实数轴与四元数的夹角表示旋转的度数，作用于实部为 0 的四元数表示的向量上
-
-设单位超球面上的 $x=cos\theta+I_xsin\theta$ (使用 $I_x$ 表示在 $\{i,j,k\}$ 内 $x$ 投影方向上的单位向量)
-
-$xu = (cos\theta+I_xsin\theta)V_u=V_ucos\theta+(- I_x \cdot V_u + I_x \times V_u)sin\theta$
-
-对于在 $\{1,x\}$ 上的 $u$，等价于按照 $1 \rightarrow x$ 的方向旋转 $\theta$ 度
-
-对于在 $W_x$ 上的 $u$，$I_x \cdot V_u=0$，于是 $xu=V_ucos\theta+I_x \times V_usin\theta$, 按照叉乘的性质，会按照右手定则旋转 $\theta$ 度
-
-其它向量都可以分解为这两个平面上的分量，分别作用后再组合
-
-## 四元数旋转
-
-现在的作用会让它在 $\{1,x\}$ 上有多余的旋转, 我们需要抵消这个旋转
-
-我们用 $quq^{-1}, q=cos\theta+I_qsin\theta$ 来表示让 $u$ 绕 $I_q$ 按右手定则旋转 $2\theta$, 记为 $\phi_q(u)$
+我们用 $quq^{-1}, q=cos\theta+hsin\theta$ 来表示让 $u$ 绕 $h$ 按右手定则旋转 $2\theta$, 记为 $\phi_q(u)$
 
 $-1$ 次方的含义是将影响还原，由于这里仅涉及旋转，把 $\theta$ 变成 $-\theta$ 即可
 
@@ -172,29 +172,29 @@ $-1$ 次方的含义是将影响还原，由于这里仅涉及旋转，把 $\the
 
 在
 
-$(x_0+V_x)(y_0+V_y)=x_0y_0+x_0V_y+V_xy_0- V_x \cdot V_y + V_x \times V_y$
+$(p_0+V_p)(q_0+V_q)=p_0q_0+p_0V_q+V_pq_0- V_p \cdot V_q + V_p \times V_q$
 
-中，只有 $V_x \times V_y$ 不满足交换律
+中，只有 $V_p \times V_q$ 不满足交换律
 
-我们将对 $u$ 的影响分解为在 $\{1,q\}$ 上的和在 $W_q$ 上的作用
+我们将对 $u$ 的影响分解为在 $\{1,h\}$ 上的和在 $W_h$ 上的作用
 
-则变成右乘不会对 $\{1,q\}$ 上的作用产生影响
+则变成右乘不会对 $\{1,h\}$ 上的作用产生影响
 
-而对于 $W_q$ 上的作用，$V_ucos\theta-I_q \times V_usin\theta=V_ucos(-\theta)+I_q \times V_usin(-\theta)$, 等价于反向
+而对于 $W_h$ 上的作用，$V_ucos\theta-h \times V_usin\theta=V_ucos(-\theta)+h \times V_usin(-\theta)$, 等价于反向
 
 因此，$quq^{-1}$ 时，
 
-先左乘 $q$, $\{1,q\}$ 上旋转 $\theta$, $W_q$ 上旋转 $\theta$
+先左乘 $q$, $\{1,h\}$ 上旋转 $\theta$, $W_h$ 上旋转 $\theta$
 
-再右乘 $q^{-1}$, $\{1,q\}$ 上旋转 $-\theta$, $W_q$ 上旋转 $-(-\theta)=\theta$
+再右乘 $q^{-1}$, $\{1,h\}$ 上旋转 $-\theta$, $W_h$ 上旋转 $-(-\theta)=\theta$
 
-$\{1,q\}$ 上的旋转被抵消，因此只有 $W_q$ 上旋转了 $2\theta$
+$\{1,h\}$ 上的旋转被抵消，因此只有 $W_h$ 上旋转了 $2\theta$
 
 所有向量的变化都可以被分解到这两个平面上，看起来就像是绕轴旋转了一样
 
 ### 用任意四元数来旋转
 
-任意非零四元数都可以用 $aq, q=cos\theta+I_qsin\theta$ 表示，其中 $a$ 是非零实数
+任意非零四元数都可以用 $aq, q=cos\theta+hsin\theta$ 表示，其中 $a$ 是非零实数
 
 由于 $q^{-1}$ 的存在， $aqu(aq)^{-1}=aqua^{-1}q^{-1}=quq^{-1}$
 
