@@ -89,7 +89,7 @@ systemProp.https.nonProxyHosts=10.*|localhost
 也可以在终端中运行`./gradlew genSources` 来生成资源
 :::
 
-点击左边的运行和调试，会发现里面多了`Minecraft Client`和`Minecraft Server`两个配置，点击`Minecraft Client`就会运行客户端，点击`Minecraft Server`就会运行服务器
+点击左边的运行和调试，会发现里面多了`Minecraft Client`和`Minecraft Server`两个配置，点击`Minecraft Client`就会运行客户端，点击`Minecraft Server`就会运行服务器，所有文件都在`run`文件夹下
 
 ::: info
 可能会遇到控制台输出中文会乱码的问题，这是因为 Windows 的控制台默认编码是GBK，而 gradle 的输出默认是UTF-8，所以需要修改输出为GBK(修改终端的编码也行)
