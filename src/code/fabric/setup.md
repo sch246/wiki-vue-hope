@@ -137,7 +137,4 @@ systemProp.https.nonProxyHosts=10.*|localhost
 }
 ```
 
-## 结束
-
-你可以把这个文件夹复制一份作为模板，这样以后就不用每次都重新配置了
-
+结束。
