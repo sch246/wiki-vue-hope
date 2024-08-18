@@ -87,13 +87,19 @@ systemProp.https.nonProxyHosts=10.*|localhost
 也可以在终端中运行`./gradlew vscode`来生成配置
 :::
 
-接下来生成资源，点击 Tasks 里面的 fabric -> genSources，它就会开始下载所需的 Minecraft 资源，它会下载到`C:/Users/[YourUsername]/.gradle/caches/fabric-loom`文件夹下，保证下次不需要重复下载
+点击左边的运行和调试，会发现里面多了`Minecraft Client`和`Minecraft Server`两个配置
+
+::: info
+也可以在终端中运行`./gradlew runClient`来运行客户端，`./gradlew runServer`来运行服务器
+:::
+
+为了能运行MC，接下来生成资源，点击 Tasks 里面的 fabric -> genSources，它就会开始下载所需的 Minecraft 资源，它会下载到`C:/Users/[YourUsername]/.gradle/caches/fabric-loom`文件夹下，保证下次不需要重复下载
 
 ::: info
 也可以在终端中运行`./gradlew genSources` 来生成资源
 :::
 
-点击左边的运行和调试，会发现里面多了`Minecraft Client`和`Minecraft Server`两个配置，点击`Minecraft Client`就会运行客户端，点击`Minecraft Server`就会运行服务器，所有文件都在`run`文件夹下
+然后点击`Minecraft Client`就会运行客户端，点击`Minecraft Server`就会运行服务器，所有文件都在`run`文件夹下
 
 ::: info
 可能会遇到控制台输出中文会乱码的问题，这是因为 Windows 的控制台默认编码是GBK，而 gradle 的输出默认是UTF-8，所以需要修改输出为GBK(修改终端的编码也行)
@@ -101,10 +107,6 @@ systemProp.https.nonProxyHosts=10.*|localhost
 比较简单的方式是在启动参数里指定编码，可以在命令行里加上，就这个例子而言，我们可以直接修改 VSCode 的 debug 配置
 
 打开`.vscode/launch.json`文件，在对应项(例如`"name": "Minecraft Client"`)的`vmArgs`末尾加上`-Dfile.encoding=GBK`
-:::
-
-::: info
-也可以在终端中运行`./gradlew runClient`来运行客户端，`./gradlew runServer`来运行服务器
 :::
 
 ::: info
