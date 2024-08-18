@@ -21,7 +21,11 @@
 
 搜索 java 扩展，安装 Extension Pack for Java 就行了
 
+![image.png](https://s2.loli.net/2024/08/18/cTEiZ7mH1VgYMKR.png)
+
 然后搜索 gradle 扩展，安装 Gradle for Java
+
+![image.png](https://s2.loli.net/2024/08/18/YDyFbcQ387ZvE9L.png)
 
 ## 下载项目模板
 
@@ -96,7 +100,7 @@ systemProp.https.nonProxyHosts=10.*|localhost
 
 比较简单的方式是在启动参数里指定编码，可以在命令行里加上，就这个例子而言，我们可以直接修改 VSCode 的 debug 配置
 
-打开`./.vscode/launch.json`文件，在对应项(例如`"name": "Minecraft Client"`)的`vmArgs`末尾加上`-Dfile.encoding=GBK`
+打开`.vscode/launch.json`文件，在对应项(例如`"name": "Minecraft Client"`)的`vmArgs`末尾加上`-Dfile.encoding=GBK`
 :::
 
 ::: info
