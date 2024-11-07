@@ -65,13 +65,13 @@ $$
 其中$\mathbf{g}$是重力加速度，$\rho$是密度，$p$是压力。向量$\mathbf{f}$是单位体积的粘性力，可以写成粘性应力张量$\tau$的矢量散度。对于牛顿流体，这个对称张量的六个分量是
 
 $$
-\tau_{ij} = \mu \left(\frac{\partial v_i}{\partial x_j} + \frac{\partial v_j}{\partial x_i} - \frac{2}{3}\delta_{ij}\frac{\partial v_k}{\partial x_k}\right) + \mu_B\delta_{ij}\frac{\partial v_k}{\partial x_k},\tag{2.8}
+\tau_{ij} = \mu \left(\frac{\partial v_i}{\partial x_j} + \frac{\partial v_j}{\partial x_i} - \frac{2}{3}\delta_{ij}\frac{\partial v_k}{\partial x_k}\right) + \mu_\vartheta\delta_{ij}\frac{\partial v_k}{\partial x_k},\tag{2.8}
 $$
 
-其中剪切粘度$\mu$和体积粘度$\mu_B$系数都依赖于局部热力学性质（仅当$\delta_{ij} = 1$如果$i = j$，$\delta_{ij} = 0$如果$i \neq j$；求和是对重复指标进行的）。因此，我们有
+其中剪切粘度$\mu$和体积粘度$\mu_\vartheta$系数都依赖于局部热力学性质（仅当$\delta_{ij} = 1$如果$i = j$，$\delta_{ij} = 0$如果$i \neq j$；求和是对重复指标进行的）。因此，我们有
 
 $$
-\mathbf{f}(\mathbf{v}) = \mu\nabla^2\mathbf{v} + \left(\mu + \frac{1}{3}\mu_B\right)\text{grad}(\text{div}\mathbf{v}),\tag{2.9}
+\mathbf{f}(\mathbf{v}) = \mu\nabla^2\mathbf{v} + \left(\mu + \frac{1}{3}\mu_\vartheta\right)\text{grad}(\text{div}\mathbf{v}),\tag{2.9}
 $$
 
 这里为了简单起见，我们假设粘度系数在运动场中保持恒定。方程(2.7)通常被称为纳维-斯托克斯方程。
