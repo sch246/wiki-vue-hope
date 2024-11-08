@@ -1,10 +1,10 @@
 # 高速加法器
 
-![成就图标](https://s2.loli.net/2024/11/06/gQbkN1axUiOKPeH.png)
+![](https://s2.loli.net/2024/11/06/gQbkN1axUiOKPeH.png)
 
 我们首先看常规的8位加法器
 
-![常规加法器](https://s2.loli.net/2024/11/06/stC7Aj9nySBhuIf.png)
+![](https://s2.loli.net/2024/11/06/stC7Aj9nySBhuIf.png)
 
 完全不行，离35差远了
 
@@ -12,7 +12,7 @@
 
 8个进位叠加，延迟就大了
 
-![20241106021433](https://s2.loli.net/2024/11/06/QDl6NzK4upyCs72.png)
+![](https://s2.loli.net/2024/11/06/QDl6NzK4upyCs72.png)
 
 ## 常规思路
 
@@ -28,7 +28,7 @@
 
 三路并联可以用开关减少延迟，三个且也可以用开关省空间，xor可以先留着
 
-![20241106023900](https://s2.loli.net/2024/11/06/VWgSDonBjcP76NG.png)
+![](https://s2.loli.net/2024/11/06/VWgSDonBjcP76NG.png)
 
 于是我们可以看到为什么成就要把标准设为35（x）
 
@@ -38,13 +38,13 @@
 
 抽出一个 1 ，那么剩下的就是 2 个 1 (AND) 或者 2 个 0 (NOR)
 
-![20241106030552](https://s2.loli.net/2024/11/06/ge6NVoRBWJq1UQK.png)
+![](https://s2.loli.net/2024/11/06/ge6NVoRBWJq1UQK.png)
 
 擦线拿到成就
 
 其实还能再凹一点，让开关同时当 and 和 or ，这算是一个斜门过法（造出了4延时的全加器）
 
-![20241106025053](https://s2.loli.net/2024/11/06/eszg8DkRUBE4pl6.png)
+![](https://s2.loli.net/2024/11/06/eszg8DkRUBE4pl6.png)
 
 ## 并行进位
 
@@ -96,7 +96,7 @@ xor 可以表示不进位的加法，那我们可以用 xor 先得到中间结�
 
 为了重复利用已有的结果，需要一定的规划
 
-![加法器3](https://s2.loli.net/2024/11/06/ZebC9Kh8kFXBoaT.png)
+![](https://s2.loli.net/2024/11/06/ZebC9Kh8kFXBoaT.png)
 
 摆出来就是 14 延迟
 
@@ -104,7 +104,7 @@ xor 可以表示不进位的加法，那我们可以用 xor 先得到中间结�
 
 可以把 AND 和 OR 换成 NAND 和 NOR 继续省
 
-![加法器4](https://s2.loli.net/2024/11/06/ntqvPEBCMhAfmW3.png)
+![](https://s2.loli.net/2024/11/06/ntqvPEBCMhAfmW3.png)
 
 达到 12 延迟
 
