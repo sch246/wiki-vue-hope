@@ -308,7 +308,6 @@ execute unless score dx e-4 matches 0 run scoreboard players operation dist_x e-
 execute unless score dy e-4 matches 0 run scoreboard players operation dist_y e-4 /= abs_dy e-4
 execute unless score dz e-4 matches 0 run scoreboard players operation dist_z e-4 /= abs_dz e-4
 
-# 已经在对应位置
 tp @e[type=marker,tag=marker,limit=1] ~ ~ ~
 
 scoreboard players set dist e-4 0
@@ -328,6 +327,8 @@ scoreboard players set #end_if int 0
 #for e in [x, y, z]
     execute if score #end_if int matches 0 if score dist_<e> e-4 <= dist_y e-4 if score dist_<e> e-4 <= dist_z e-4 run function for_raycast_blocks/<e>_min
     #mcf for_raycast_blocks/<e>_min
+        scoreboard players set #end_if int 1
+
         # dist = min(dists)
         scoreboard players operation dist e-4 = dist_<e> e-4
         # distances[i] += 1
@@ -352,10 +353,6 @@ scoreboard players set #end_if int 0
 
         execute if score d<e> e-4 matches 1.. run tp @e[type=marker,tag=marker,limit=1] ~1 ~ ~
         execute if score d<e> e-4 matches ..-1 run tp @e[type=marker,tag=marker,limit=1] ~-1 ~ ~
-
-        scoreboard players set #end_if int 1
-
-
 
 execute if score dist e-4 < max_dist e-4 at @e[type=marker,tag=marker,limit=1] run function for_raycast_blocks/loop
 
@@ -399,9 +396,9 @@ execute align xyz run function show_block
 scoreboard players set #x int 0
 execute if score #x int matches ..4 run function show_block/x
 scoreboard players set #y int 0
-execute if score #y int matches ..4 positioned ~ ~.25 ~ run function show_block/y
+execute if score #y int matches ..2 positioned ~ ~.25 ~ run function show_block/y
 scoreboard players set #z int 0
-execute if score #z int matches ..4 positioned ~ ~ ~.25 run function show_block/z
+execute if score #z int matches ..2 positioned ~ ~ ~.25 run function show_block/z
 ```
 
 ```mcfunction
@@ -423,16 +420,17 @@ particle bubble ~ ~ ~1 0.0 0.0 0.0 0 1 force
 particle bubble ~1 ~ ~1 0.0 0.0 0.0 0 1 force
 
 scoreboard players add #y int 1
-execute if score #y int matches ..3 positioned ~ ~.25 ~ run function show_block/y
+execute if score #y int matches ..2 positioned ~ ~.25 ~ run function show_block/y
 ```
 
 ```mcfunction
-#func show_block/zparticle bubble ~ ~ ~ 0.0 0.0 0.0 0 1 force
+#func show_block/z
+particle bubble ~ ~ ~ 0.0 0.0 0.0 0 1 force
 particle bubble ~1 ~ ~ 0.0 0.0 0.0 0 1 force
 particle bubble ~ ~1 ~ 0.0 0.0 0.0 0 1 force
 particle bubble ~1 ~1 ~ 0.0 0.0 0.0 0 1 force
 
 scoreboard players add #z int 1
-execute if score #z int matches ..3 positioned ~ ~ ~.25 run function show_block/z
+execute if score #z int matches ..2 positioned ~ ~ ~.25 run function show_block/z
 ```
 
