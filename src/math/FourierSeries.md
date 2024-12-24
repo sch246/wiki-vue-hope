@@ -8,7 +8,7 @@
 
 $$
 \begin{align*}
-f(t) &= \sum_{n=-\infin}^{\infin}c_{n}e^{n \cdot 2\pi it}\\
+f(t) &= \sum_{n=-\infty}^{\infty}c_{n}e^{n \cdot 2\pi it}\\
 &= \dots + c_{-2}e^{-2 \cdot 2\pi it} + c_{-1}e^{-1 \cdot 2\pi it} + c_{0}e^{0 \cdot 2\pi it} + c_{1}e^{1 \cdot 2\pi it} + c_{2}e^{2 \cdot 2\pi it} + \dots
 \end{align*}
 $$
@@ -55,7 +55,7 @@ $$
 至此，我们对于任意函数，可以有计算式
 
 $$
-f(t) = \sum_{n=-\infin}^{\infin}c_{n}e^{n \cdot 2\pi it}
+f(t) = \sum_{n=-\infty}^{\infty}c_{n}e^{n \cdot 2\pi it}
 $$
 
 其中
@@ -75,7 +75,7 @@ $$
 f(x)=\left\{
 \begin{aligned}
 1 &, x\in [0, 0.5)
-\\-1 &, x\in [0.5, 1]
+\\ -1 &, x\in [0.5, 1]
 \end{aligned}
 \right.
 \end{equation*}
@@ -107,7 +107,7 @@ $$
 于是我们有
 
 $$
-f(x)=\sum_{n=-\infin}^{\infin}c_{n}e^{n \cdot 2\pi ix}
+f(x)=\sum_{n=-\infty}^{\infty}c_{n}e^{n \cdot 2\pi ix}
 = \sum_{n=1,3,5,\dots}\frac{2}{n\cdot\pi i}e^{n \cdot 2\pi ix}-\frac{2}{n\cdot\pi i}e^{-n \cdot 2\pi ix}
 \\= \sum_{n=1,3,5,\dots}\frac{4}{n\cdot\pi}\frac{1}{2i}\left(e^{n \cdot 2\pi ix}-e^{-n \cdot 2\pi ix}\right)
 \\= \sum_{n=1,3,5,\dots}\frac{4}{n\cdot\pi}\text{sin}(n\cdot 2\pi x)
@@ -162,7 +162,7 @@ $$
 对于实数域上的函数$f(t)$，需要将复指数的形式转换为 sin 和 cos 的形式
 
 $$
-f(t) = \sum_{n=-\infin}^{\infin}c_{n}e^{n \cdot 2\pi it}
+f(t) = \sum_{n=-\infty}^{\infty}c_{n}e^{n \cdot 2\pi it}
 $$
 
 $$
@@ -172,7 +172,7 @@ $$
 我们留出$n=0$，把其它的正负两两配对
 
 $$
-f(t) = c_0 + \sum_{n=1}^{\infin}\left(c_n e^{n \cdot 2\pi it} + c_{-n} e^{-n \cdot 2\pi it} \right)
+f(t) = c_0 + \sum_{n=1}^{\infty}\left(c_n e^{n \cdot 2\pi it} + c_{-n} e^{-n \cdot 2\pi it} \right)
 $$
 
 由欧拉公式展开
@@ -210,9 +210,9 @@ c_n = a_n - b_n\cdot i
 \\
 c_{-n} = a_n + b_n\cdot i
 \\
-f(t) = c_0 + \sum_{n=1}^{\infin}((a_n - b_n\cdot i) (\text{cos}(n\cdot 2\pi t) + i\cdot\text{sin}(n\cdot 2\pi t))
+f(t) = c_0 + \sum_{n=1}^{\infty}((a_n - b_n\cdot i) (\text{cos}(n\cdot 2\pi t) + i\cdot\text{sin}(n\cdot 2\pi t))
 \\ + (a_n + b_n\cdot i)(\text{cos}(n\cdot 2\pi t) - i\cdot\text{sin}(n\cdot 2\pi t)))
-\\ = c_0 + \sum_{n=1}^{\infin}(2a_n\text{cos}(n\cdot 2\pi t)+2b_n\text{sin}(n\cdot 2\pi t))
+\\ = c_0 + \sum_{n=1}^{\infty}(2a_n\text{cos}(n\cdot 2\pi t)+2b_n\text{sin}(n\cdot 2\pi t))
 $$
 
 由于
@@ -230,7 +230,7 @@ $$
 于是我们得到了实数域上的傅里叶级数
 
 $$
-f(t) = a_0 + \sum_{n=1}^{\infin}(2a_n\text{cos}(n\cdot 2\pi t)+2b_n\text{sin}(n\cdot 2\pi t))
+f(t) = a_0 + \sum_{n=1}^{\infty}(2a_n\text{cos}(n\cdot 2\pi t)+2b_n\text{sin}(n\cdot 2\pi t))
 $$
 
 其中
