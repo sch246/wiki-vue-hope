@@ -11,6 +11,10 @@ $$\mathbf{a}\cdot\mathbf{b} = |a||b|\cos\theta$$
 
 它是对称的，从这个向量投影到另一个向量相乘会得到一样的结果。
 
+另一个等价的表述为，用其中一个向量方向上的单位向量去测量这两个向量投影的长度，然后相乘
+
+这可以理解为乘法的一种扩展。
+
 ## 计算
 
 以平面直角坐标系为例，我们知道向量可以表示为其基向量的线性组合
@@ -42,38 +46,6 @@ b_2
 同时，长度也可以由向量与其自身的内积导出
 
 $$|\mathbf{a}|^2 = \mathbf{a}\cdot\mathbf{a}$$
-
-## 内积与测量
-
-当我们写下向量的坐标的时候，暗含了我们使用基向量去测量这个向量
-
-测量的方式就是投影，准确来说，向量 $\mathbf{v}$ 在分量 $i$ 上的值
-
-$$v_i=\frac{|\mathbf{v}|\cos\theta}{|\mathbf{e}_i|}$$
-
-于是向量内积可以表述为，用其中一个向量方向上的单位向量去测量这两个向量的长度，然后相乘，这可以理解为乘法的一种扩展。
-
-向量 $\mathbf{v}$ 在一组基向量 $\mathbf{e}_i$ 上的坐标 $v_i$ 可以通过以下方式表达：
-
-$$\mathbf{v} = v_i\mathbf{e}_i$$
-
-它同时也是相对坐标转换为全局坐标的方式
-
-将其与 $\mathbf{e}_i$ 作内积，得到
-
-$$\mathbf{v}\cdot\mathbf{e}_i = v_i\mathbf{e}_i\cdot\mathbf{e}_i$$
-
-整理得到 $\mathbf{v}$ 在 $\mathbf{e}_i$ 下的坐标
-
-$$v_i = \frac{\mathbf{v} \cdot \mathbf{e}_i}{\mathbf{e}_i \cdot \mathbf{e}_i} = \frac{\mathbf{v} \cdot \mathbf{e}_i}{|\mathbf{e}_i|^2}$$
-
-于是我们用内积重新定义了测量。
-
-在标准正交基情况下（即基向量相互垂直且单位长度），$|\mathbf{e}_i|^2 = 1$，此时坐标简化为：
-
-$$v_i = \mathbf{v} \cdot \mathbf{e}_i$$
-
-这在将全局坐标转换为相对坐标时十分有用
 
 ## 拓展到多维
 
@@ -119,3 +91,43 @@ $$|\mathbf{a}|^2 = g_{ij}a^ia^j$$
 $$g_{ij}a^ia^j > 0$$
 
 这正是对称矩阵正定性的定义。因此 $g_{ij}$ 是正定的。
+
+## 坐标变换
+
+向量 $\mathbf{v}$ 在一组基向量 $\mathbf{e}_i$ 上的坐标 $u^i$ 可以表达为：
+
+$$\mathbf{v} = u^i\mathbf{e}_i$$
+
+若基向量 $\mathbf{e}_i$ 在全局坐标系下表示为 $e_{ij}$，那么向量 $\mathbf{v}$ 的全局坐标
+
+$$v^i = e_{ij} u^j$$
+
+是相对坐标转换为全局坐标的方式
+
+接下来计算全局坐标转换为相对坐标
+
+点乘以基向量
+
+$$\begin{align*}
+\mathbf{v}\cdot\mathbf{e}_j &= (u^i\mathbf{e}_i)\cdot\mathbf{e}_j\\
+&= u^i(\mathbf{e}_i\cdot\mathbf{e}_j)\\
+&= g_{ij} u^i
+\end{align*}$$
+
+于是得到：
+
+$$u^i = g^{ij}(\mathbf{v}\cdot\mathbf{e}_j)$$
+
+其中 $g^{ij}$ 是度量张量 $g_{ij}$ 的逆
+
+我们定义对偶基(或称逆变基)
+
+$$\mathbf{e}^i = g^{ij}\mathbf{e}_j$$
+
+这样，坐标可以简洁地表示为：
+
+$$u^i = \mathbf{v}\cdot\mathbf{e}^i$$
+
+在标准正交基情况下（即基向量相互垂直且单位长度），$g_{ij} = \delta_{ij}$，此时坐标简化为：
+
+$$u^i = \mathbf{v} \cdot \mathbf{e}_i$$
