@@ -7,6 +7,10 @@ $$\mathbf{a}\cdot\mathbf{b} = |a||b|\cos\theta$$
 
 其中，$\mathbf{a}, \mathbf{b}$ 是向量，$\theta$ 是它们之间的夹角
 
+直观来看，求点积相当于一个向量乘以另一个向量对自己的投影
+
+它是对称的，从这个向量投影到另一个向量相乘会得到一样的结果。
+
 ## 计算
 
 以平面直角坐标系为例，我们知道向量可以表示为其基向量的线性组合
@@ -43,43 +47,31 @@ $$|\mathbf{a}|^2 = \mathbf{a}\cdot\mathbf{a}$$
 
 当我们写下向量的坐标的时候，暗含了我们使用基向量去测量这个向量
 
-测量的方式就是投影，这个分量上的值计算为
+测量的方式就是投影，准确来说，向量 $\mathbf{v}$ 在分量 $i$ 上的值
 
-$$\frac{|\mathbf{a}|\cos\theta}{|\mathbf{e}|}$$
+$$v_i=\frac{|\mathbf{v}|\cos\theta}{|\mathbf{e}_i|}$$
 
-其中 $\mathbf{a}$ 是待测向量，$\mathbf{e}$ 是基向量，$\theta$ 是夹角
+于是向量内积可以表述为，用其中一个向量方向上的单位向量去测量这两个向量的长度，然后相乘，这可以理解为乘法的一种扩展。
 
-向量内积可以理解为乘法的一种拓展
+向量 $\mathbf{v}$ 在一组基向量 $\mathbf{e}_i$ 上的坐标 $v_i$ 可以通过以下方式表达：
 
-用一个向量方向上的单位向量去测量这两个向量，然后乘起来，得到
-
-$$\frac{|\mathbf{a}||\mathbf{b}|\cos\theta}{1}$$
-
-即为定义式
-
-### 反向定义测量
-
-特别地，我们可以用内积反过来定义测量
-
-向量 $\mathbf{v}$ 在一组基向量 $\mathbf{e}_i$ 上的坐标 $v^i$ 可以通过以下方式表达：
-
-$$\mathbf{v} = v^i\mathbf{e}_i$$
+$$\mathbf{v} = v_i\mathbf{e}_i$$
 
 它同时也是相对坐标转换为全局坐标的方式
 
 将其与 $\mathbf{e}_i$ 作内积，得到
 
-$$\mathbf{v}\cdot\mathbf{e}_i = v^i\mathbf{e}_i\cdot\mathbf{e}_i$$
+$$\mathbf{v}\cdot\mathbf{e}_i = v_i\mathbf{e}_i\cdot\mathbf{e}_i$$
 
 整理得到 $\mathbf{v}$ 在 $\mathbf{e}_i$ 下的坐标
 
-$$v^i = \frac{\mathbf{v} \cdot \mathbf{e}_i}{\mathbf{e}_i \cdot \mathbf{e}_i} = \frac{\mathbf{v} \cdot \mathbf{e}_i}{|\mathbf{e}_i|^2}$$
+$$v_i = \frac{\mathbf{v} \cdot \mathbf{e}_i}{\mathbf{e}_i \cdot \mathbf{e}_i} = \frac{\mathbf{v} \cdot \mathbf{e}_i}{|\mathbf{e}_i|^2}$$
 
 于是我们用内积重新定义了测量。
 
 在标准正交基情况下（即基向量相互垂直且单位长度），$|\mathbf{e}_i|^2 = 1$，此时坐标简化为：
 
-$$v^i = \mathbf{v} \cdot \mathbf{e}_i$$
+$$v_i = \mathbf{v} \cdot \mathbf{e}_i$$
 
 这在将全局坐标转换为相对坐标时十分有用
 
@@ -104,11 +96,11 @@ $$\mathbf{a}\cdot\mathbf{b} = \sum_{ij} a^ib^j(\mathbf{e}_i\cdot\mathbf{e}_j) = 
 
 ## 度量张量
 
-在非欧空间内，基向量可能产生放缩或旋转，以至于每一点都有不同的度量，此时我们定义度量张量 $\mathbf{g}$ 来描述局部基向量的关系
+在非欧空间内，基向量可能产生放缩或旋转， $\mathbf{e}_i\cdot\mathbf{e}_j$ 不再恒等于 $0$ 或 $1$，甚至可能在每一点都不同，此时我们定义这个值为度量张量 $\mathbf{g}$
 
 $$g_{ij} = \mathbf{e}_i\cdot\mathbf{e}_j$$
 
-它是一个 $n\cdot n$ 的矩阵，$n$ 是维数，描述每两个基向量内积的值，并且可能随着坐标而改变
+它是一个 $n\cdot n$ 的矩阵，$n$ 是维数，描述每两个基向量内积的值，并且是关于坐标的函数
 
 由于向量之间的内积是对称的，很容易看出它是一个对称矩阵
 
