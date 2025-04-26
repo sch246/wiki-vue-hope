@@ -52,8 +52,8 @@ $$|\mathbf{a}|^2 = \mathbf{a}\cdot\mathbf{a}$$
 我们知道向量可以表示为其基向量的线性组合
 
 $$\begin{align*}
-\mathbf{a} &= a^1\mathbf{e}_1 + a^2\mathbf{e}_2+\cdots = a^i\mathbf{e}_i\\
-\mathbf{b} &= b^1\mathbf{e}_1 + b^2\mathbf{e}_2+\cdots = b^i\mathbf{e}_i
+\mathbf{a} &= a^1\mathbf{e}_1 + a^2\mathbf{e}_2+\cdots = \sum_i a^i\mathbf{e}_i\\
+\mathbf{b} &= b^1\mathbf{e}_1 + b^2\mathbf{e}_2+\cdots = \sum_i b^i\mathbf{e}_i
 \end{align*}$$
 
 > 这里的上标来自[上标与下标的区别](/math/base/updown)，意味着基向量变大时，为了保持含义不变，对应的数值会减小
@@ -65,6 +65,10 @@ $$\mathbf{e}_i\cdot\mathbf{e}_j=\delta_{ij}$$
 所以得到了一般的向量内积计算式
 
 $$\mathbf{a}\cdot\mathbf{b} = \sum_{ij} a^ib^j(\mathbf{e}_i\cdot\mathbf{e}_j) = \sum_{ij} \delta_{ij}a^ib^j = \sum_i a^ib^i$$
+
+使用[爱因斯坦求和约定](/math/base/einstein-summation.md)可以简洁地表示为
+
+$$\mathbf{a}\cdot\mathbf{b} =  a^ib_i$$
 
 ## 度量张量
 
@@ -86,15 +90,15 @@ $$\mathbf{a}\cdot\mathbf{b} = \sum_{ij} a^i\mathbf{e}_ib^j\mathbf{e}_j = g_{ij} 
 
 $$|\mathbf{a}|^2 = g_{ij}a^ia^j$$
 
-由于物理空间中任何非零向量的长度都是正的，所以对任意非零的 $a^i$，有：
+由于物理空间中任何非零向量的长度都是正的，所以对任意非零的 $a^i$，有：
 
-$$g_{ij}a^ia^j > 0$$
+$$g_{ij}a^ia^j > 0$$
 
 这正是对称矩阵正定性的定义。因此 $g_{ij}$ 是正定的。
 
 ## 坐标变换
 
-向量 $\mathbf{v}$ 在一组基向量 $\mathbf{e}_i$ 上的坐标 $u^i$ 可以表达为：
+向量 $\mathbf{v}$ 在一组基向量 $\mathbf{e}_i$ 上的坐标 $u^i$ 可以表达为：
 
 $$\mathbf{v} = u^i\mathbf{e}_i$$
 
@@ -130,4 +134,4 @@ $$u^i = \mathbf{v}\cdot\mathbf{e}^i$$
 
 在标准正交基情况下（即基向量相互垂直且单位长度），$g_{ij} = \delta_{ij}$，此时坐标简化为：
 
-$$u^i = \mathbf{v} \cdot \mathbf{e}_i$$
+$$u^i = \mathbf{v} \cdot \mathbf{e}_i$$
