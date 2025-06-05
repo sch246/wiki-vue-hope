@@ -45,6 +45,28 @@
         graticule polygon
     ```
 
+    ```radar
+    ---
+    config:
+    radar:
+        axisScaleFactor: 0.25
+        curveTension: 0.1
+    theme: base
+    themeVariables:
+        cScale0: "#FF0000"
+        cScale1: "#00FF00"
+        cScale2: "#0000FF"
+        radar:
+        curveOpacity: 0
+    ---
+    axis uc["极限能力"], gps["通用性/范式支持"], fi["前瞻性/创新性"]
+    axis em["生态成熟度/流行度"], bf["入门友好度"], de["开发效率/表达力"]
+    curve a["HTML/CSS"] {2.0, 1.0, 4.0, 5.0, 5.0, 4.0}
+    max 5
+    min 0
+    graticule polygon
+    ```
+
 ---
 
 ## **N (绿色 - Normal): 基础构建者 (Foundational Builder)**
