@@ -1,4 +1,5 @@
 import { defineUserConfig } from "vuepress";
+
 import theme from "./theme.js";
 
 export default defineUserConfig({
@@ -8,20 +9,11 @@ export default defineUserConfig({
   title: "sch246's wiki",
   description: "sch246的wiki",
 
-  head: [
-  ],
-
   theme,
 
   // 和 PWA 一起启用
-  shouldPrefetch: false,
+  // shouldPrefetch: false,
 
-  // 代码超过6行才显示行号
-  markdown: {
-    code: {
-      lineNumbers: 6,
-    },
-  },
   extendsMarkdown: (md) => {
     const f = md.renderer.rules.text ?? ((tokens, idx) => tokens[idx].content);
     md.renderer.rules.text = (...args) =>
@@ -58,7 +50,4 @@ export default defineUserConfig({
       return b(tokens, idx, options, env, self);
     };
   },
-
-  plugins: [
-  ],
 });

@@ -61,7 +61,7 @@
 
 可以在`gradle.properties`文件中配置java路径
 
-```gradle.properties
+```sh title="gradle.properties"
 org.gradle.java.home=C:/path/to/your/jdk-home
 ```
 
@@ -69,7 +69,7 @@ org.gradle.java.home=C:/path/to/your/jdk-home
 
 - [如何加速Fabric模组的构建](https://fabricmc.cn/2021/06/28/%E5%A6%82%E4%BD%95%E5%8A%A0%E9%80%9FFabric%E6%A8%A1%E7%BB%84%E7%9A%84%E6%9E%84%E5%BB%BA/)
 
-```gradle.properties
+```sh title="gradle.properties"
 systemProp.http.proxyHost=127.0.0.1
 systemProp.http.proxyPort=7897
 systemProp.https.nonProxyHosts=10.*|localhost

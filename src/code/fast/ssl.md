@@ -17,7 +17,7 @@ acme.sh --issue -d mydomain.com --standalone
 
 对于nginx可以这样填
 
-```conf
+```sh title="conf"
 server {
     listen 443 ssl;
     server_name mydomain.com;

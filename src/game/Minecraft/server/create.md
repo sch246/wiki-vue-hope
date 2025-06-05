@@ -92,7 +92,7 @@ chmod +x run.sh
 
 > [https://minecraft.fandom.com/zh/wiki/Server.properties](https://minecraft.fandom.com/zh/wiki/Server.properties)
 
-``` 以下内容来自22w42a(1.19.3)
+```txt title="以下内容来自22w42a(1.19.3)""
 #Minecraft server properties
 #（文件修改时间戳）
 enable-jmx-monitoring=false

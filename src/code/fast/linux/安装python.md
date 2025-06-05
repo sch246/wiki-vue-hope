@@ -109,4 +109,4 @@ hash -d python3
 hash -d pip3
 ```
 
-## [python交互式命令行不能使用方向键](/blogs/2023-01-24-python命令行不能使用方向键.md)
+## python交互式命令行不能使用方向键(已废弃)

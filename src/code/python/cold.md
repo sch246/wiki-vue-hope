@@ -12,7 +12,7 @@ pip3 install pyreadline3
 pip3 install readline
 ```
 
-如果linux安装不上，可以看[python交互式命令行不能使用方向键](/blogs/2023-01-24-python命令行不能使用方向键.md)
+如果linux安装不上，可以看python交互式命令行不能使用方向键(已废弃)
 
 它也可以让`input()`支持方向键，需要显式 import
 

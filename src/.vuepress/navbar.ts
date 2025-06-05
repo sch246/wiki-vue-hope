@@ -8,11 +8,6 @@ export default navbar([
     link: "/code/"
   },
   {
-    text: "python",
-    icon: "gravity-ui:logo-python",
-    link: "/python/"
-  },
-  {
     text: "游戏",
     icon: "pepicons-pop:controller",
     link: "/game/"
