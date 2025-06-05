@@ -31,18 +31,18 @@
 1.  **HTML/CSS**
     *   **中二描述:** 《虚像之帷幕》 - 编织世界之形，却无力赋予其灵魂，仅是光影的序章，是“视界”的基石。
     *   **范式:** 标记语言 / 样式表。
+    *   **应用领域**: 网页内容与样式。
     ```mermaid
-    %%{init: {"themeVariables": {"cScale0": "#E0E0E0", "radar": {"axisColor": "black"}}}}%%
     ---
     title: "HTML/CSS - Other"
     ---
     radar-beta
-      axis uc["极限能力"], gps["通用性/范式支持"], fi["前瞻性/创新性"]
-      axis em["生态成熟度/流行度"], bf["入门友好度"], de["开发效率/表达力"]
-      curve "HTML/CSS" {2.0, 1.0, 4.0, 5.0, 5.0, 4.0}
-      max 5
-      min 0
-      graticule polygon
+        axis uc["极限能力"], gps["通用性/范式支持"], fi["前瞻性/创新性"]
+        axis em["生态成熟度/流行度"], bf["入门友好度"], de["开发效率/表达力"]
+        curve a["HTML/CSS"] {2.0, 1.0, 4.0, 5.0, 5.0, 4.0}
+        max 5
+        min 0
+        graticule polygon
     ```
 
 ---
