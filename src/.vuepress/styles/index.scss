@@ -80,3 +80,8 @@ html[data-theme=dark] blockquote {
     border-color: #3ecfaa;
     background-color: #3ecfaa17;
 }
+
+.mermaid-content svg {
+    width: 100%;
+    height: auto;
+}
