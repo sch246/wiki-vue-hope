@@ -607,7 +607,7 @@ for {
 `for` 循环可以直接使用 `it` 来引用其输入流，这使得 `for` 表达式本身可以被视为一个接收流并转换流的函数。
 ```floc
 // 定义一个将流中每个元素乘以2的函数
-double_stream = for ( el <- it |i ) yield el*2 |i // 保留原始索引
+double_stream = for ( el <- it ) yield el*2 // 保留原始索引
 
 // 使用
 [1,2,3] |> double_stream =: result // result 将是 [2,4,6]
