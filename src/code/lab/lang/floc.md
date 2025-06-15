@@ -217,13 +217,14 @@ result <- do {
 };
 ```
 
-`continue`是捕获两层`do`块之间的后续部分的定界续体
+`continue`是捕获两层`do`块(两层作用域)之间的剩余部分的定界续体，`break`是外层`do`块的一次性续体
 
 ```floc
 do {
     datas;
-    do { map continue it };
-    // continue是默认续体，捕获两层do块之间的后面部分，将“后续操作”作用在每个data上
+    do { map continue it |> break };
+    // 将“后续操作”作用在每个data上
+    // 使用break让内层do块执行完后不再继续运行后续代码，而是继续外层do块的后续内容
     process it;
 };
 ```
@@ -234,14 +235,23 @@ do {
 do {
     datas;
     do fork it;
-    //使用`do`不接代码块相当于perform效应，当没有参数时可以`do fork;`
+    //使用`do`不接代码块相当于perform效应，这里当没有参数时可以写成`do fork;`
     process it;
-} with {  // with放在这里，于是continue代表的续体不变
-    fork = {map continue it};
+} with {
+    fork = { map continue it |> break };
+    // continue和break代表的续体不变
 };
 ```
 
-此时的`continue`含义可以看成是，在**调用层面**，继续**外面一层**函数的运行
+此时的`continue`含义可以看成是，在**调用层面**，**继续外面一层**函数的运行
+
+`break`含义可以看成是，在**调用层面**，**结束外面一层**函数的运行
+
+如果不使用`break`，那么相当于在末尾默认调用一次`continue`
+
+`continue`和`break`的生命周期只在外层`do`块执行期间起效，虽然理论上可以作为返回值传出去，但是不建议这么做。
+
+直接或间接持有它的变量的生命周期不能长于外层`do`块执行的生命周期
 
 用这玩意模拟多层循环
 
@@ -251,7 +261,7 @@ do {
     el <- do fork data;
     [el*2];
 } with {
-    fork = {flatmap continue it};
+    fork = { flatmap continue it |> break };
 }; // 最终会遍历并铺平datas
 ```
 
@@ -264,8 +274,12 @@ do {
     do maybe data;
     // `do maybe`的语法糖为`?`，于是这里可以缩写为`?data;`
     process it;
-} with {  // with放在这里，于是continue代表的续体不变
-    maybe = {nil->nil; x->x};
+} with {
+    maybe = {
+        nil -> break nil;
+        x -> x; // 默认调用continue接收返回值
+    };
+    // maybe是一个默认处理器，定义于每个作用域，这里其实可以不定义
 };
 ```
 
@@ -579,24 +593,21 @@ for {
 for {
     a <- 1..10
 } do {
-    if (a<5) continue();
+    if (a<5) break continue();
+    // 为了防止continue运行完后返回，必须配合break使用
     print a; // 此时只会打印5..10
 }
 ```
 
-Floc 不提供 `break` 关键字，你需要自己定义
-
-可以在每一行循环后接`with`绑定这一层循环**外面**的`do`块，于是可以自定义`break`以跳出，其中第一个循环绑定的是最外层的`for`块
+当`for`是多层循环时，可以在每一行循环后接`with`绑定这一层循环**外面**的`do`块，于是可以自定义续体以跳出，其中第一个循环绑定的是最外层的`for`块
 
 ```floc
 for {
-    a <- 1..3 with {
-        break={nil->nil; x->x}
-    };
-    b <- 1..3;
-    c <- 1..3;
+    a <- 1..3 with { k={break it} }; // 当运行 k 时跳出整个 for 循环
+    b <- 1..3;   // 如果它设置在更内层，那么跳出内层循环相当于外层的 continue
+    c <- 1..3;   // 在最内层的break与主体表达式的break相同，都只能结束最内层循环
 } do {
-    if (a>7) do break(); // 当运行break时跳出整个for循环
+    if (a>7) do k();
     print a; // 此时只会打印1..7，虽然由于后面的bc循环，每个数字打印9次
 }
 ```
