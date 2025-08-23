@@ -245,7 +245,7 @@ qu=&|q|(\cos\theta_q+h\sin\theta_q)|u|(\cos\theta_u+g\sin\theta_u)\\
 \end{align*}
 $$
 
-### 取反
+### 取反、共轭、逆、右乘
 
 关于如何取反，有几个容易混淆的操作需要区分
 
