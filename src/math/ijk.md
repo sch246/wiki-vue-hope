@@ -145,9 +145,9 @@ $ijk$ 空间内的两个向量相乘，结果可以分解为实数加 $ijk$ 空�
 
 $$
 \begin{align*}
- &(q_1i+q_2j+q_3k)(u_1i+u_2j+u_3k)\\
-=&(q_1iu_1i+q_2ju_2j+q_3ku_3k)\\
- &+(q_2ju_3k+q_3ku_2j)+(q_1iu_3k+q_3ku_1i)+(q_1iu_2j+q_2ju_1i)\\
+ &(iq_1+jq_2+kq_3)(iu_1+ju_2+ku_3)\\
+=&(iiq_1u_1+jjq_2u_2+kkq_3u_3)\\
+ &+(jkq_2u_3+kjq_3u_2)+(ikq_1u_3+kiq_3u_1)+(ijq_1u_2+jiq_2u_1)\\
 =&-(q_1u_1+q_2u_2+q_3u_3)\\
  &+i\begin{vmatrix}q_2&q_3\\u_2&u_3\end{vmatrix}-j\begin{vmatrix}q_1&q_3\\u_1&u_3\end{vmatrix}+k\begin{vmatrix}q_1&q_2\\u_1&u_2\end{vmatrix}\\
 =&-(q_1u_1+q_2u_2+q_3u_3)+\begin{vmatrix}i&j&k\\q_1&q_2&q_3\\u_1&u_2&u_3\end{vmatrix}
