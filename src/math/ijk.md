@@ -73,7 +73,7 @@ $\cos\theta+i\sin\theta$ 作用于基 $\{1, i\}$，将 1 映射到 $\cos\theta+i
 
 ### 任意复数
 
-可以将任意复数 $z$ 的作用分解为放缩和旋转（$e^{r_z}=|z|$）
+可以将任意复数 $z$ 的作用分解为放缩和旋转（记 $e^{r_z}=|z|$）
 
 $$
 z=e^{r_z}(\cos\theta_z+i\sin\theta_z)=e^{r_z+i\theta_z}
