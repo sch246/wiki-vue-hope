@@ -12,3 +12,7 @@
     - 980001119
 - MCBBS
     - [△＠←](https://www.mcbbs.net/home.php?mod=space&uid=740479)
+- mcmod
+    - https://center.mcmod.cn/1230613
+- modrinth
+    - https://modrinth.com/user/sch246
