@@ -7,7 +7,7 @@ heroText: sch246's wiki
 tagline: 我的知识库
 actions:
   - text: 速查
-    link: /code/fast/
+    link: /code/
     type: primary
 
   - text: 关于我
