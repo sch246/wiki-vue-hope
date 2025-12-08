@@ -49,12 +49,12 @@ AI 评分，仅供娱乐。
 title: "1943 - Plankalkül"
 config:
   themeVariables:
-    cScale0: "#A0522D"
+    cScale0: "#FFFFFF"
 ---
 radar-beta
     axis Perf["【破坏力】极限出力"], Stab["【防御力】绝对境界"], Abst["【精神力】构筑术式"]
     axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
-    curve a["Plankalkül"] { 30, 40, 80, 0, 0, 5 }
+    curve a["Plankalkül"] { 30, 40, 80, 15, 0, 5 }
     max 100
     min 0
     graticule polygon
@@ -441,7 +441,7 @@ radar-beta
     axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
     
     %% CPL: 理论强实际无, 极其复杂导致没法用
-    curve a["CPL"] { 60, 40, 80, 10, 0, 5 }
+    curve a["CPL"] { 60, 40, 80, 20, 0, 5 }
     max 100
     min 0
     graticule polygon
@@ -626,7 +626,7 @@ radar-beta
 title: "1967 - BCPL"
 config:
   themeVariables:
-    cScale0: "#708090"
+    cScale0: "#FFFFFF"
 ---
 radar-beta
     axis Perf["【破坏力】极限出力"], Stab["【防御力】绝对境界"], Abst["【精神力】构筑术式"]
@@ -3531,7 +3531,7 @@ radar-beta
 title: "2022 - Carbon"
 config:
   themeVariables:
-    cScale0: "#000000"
+    cScale0: "#FFFFFF"
 ---
 radar-beta
     axis Perf["【破坏力】极限出力"], Stab["【防御力】绝对境界"], Abst["【精神力】构筑术式"]
