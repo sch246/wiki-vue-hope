@@ -351,6 +351,9 @@ ML语言的一个主要方言，同时支持函数式、命令式和面向对象
 #### HLSL (High-Level Shading Language)
 微软为DirectX平台设计的着色器编程语言。HLSL用于在图形处理单元（GPU）上编写程序（着色器），以控制3D图形的渲染过程，如光照、纹理映射和特效，是游戏开发和计算机图形学中的关键工具。
 
+#### Io
+由 Steve Dekorte 开发的一种基于原型的面向对象编程语言。Io 深受 Smalltalk（所有都是对象，所有都是消息）和 Self（基于原型）的影响，但将其语法简化到了极致。它的解释器极其小巧，具有极高的动态性和自省能力。虽然在工业界应用不多，但在编程语言设计领域，Io 常被视为展示“简单之美”和元编程能力的教科书级案例。
+
 ### 2003
 #### F
 是Fortran 95语言的一个严格的、最小化的子集，旨在移除Fortran中一些过时和不安全的特性，从而提供一个更现代、更易于教学和编写高质量代码的Fortran版本。
@@ -417,6 +420,9 @@ Clojure语言到JavaScript的编译器。它允许开发者使用Clojure的Lisp�
 #### Kotlin
 一种在Java虚拟机（JVM）上运行的静态类型编程语言，旨在与Java完全互操作。Kotlin提供了更简洁的语法、更强大的类型推断和空安全等现代特性。2017年，Google宣布Kotlin成为Android官方推荐开发语言，极大促进了其普及。
 
+#### Red
+Rebol 语言的现代继承者，旨在克服 Rebol 的局限性并提供更广泛的应用场景。Red 是一种全栈语言，既能进行底层的系统编程（甚至编写操作系统内核），又能利用内置的 DSL 快速构建跨平台的 GUI 应用程序。它以生成极小的可执行文件（通常仅 1MB 左右，无依赖）和代码即数据（Homoiconic）的特性而闻名。
+
 ### 2012
 #### Elixir
 一种运行在Erlang虚拟机（BEAM）上的动态函数式编程语言。Elixir结合了Ruby的语法优雅和Erlang在构建高度并发、容错和分布式系统方面的能力，广泛应用于Web开发（Phoenix框架）和消息队列。
@@ -429,6 +435,10 @@ Clojure语言到JavaScript的编译器。它允许开发者使用Clojure的Lisp�
 
 #### TypeScript
 JavaScript的一个超集，它添加了静态类型定义。2014年，TypeScript 1.0发布，标志着其作为生产可用语言的里程碑。 TypeScript代码可以编译为纯JavaScript，旨在提高大型JavaScript项目的可维护性、可伸 Gh展性和开发效率，在Web前端和后端开发中广泛使用。
+
+### 2013
+#### PureScript
+一种强类型、纯函数式编程语言，主要编译为 JavaScript。它的语法和语义深受 Haskell 影响（如类型推断、代数数据类型、模式匹配），但与 Haskell 不同的是，PureScript 默认采用严格求值（Strict Evaluation）而非惰性求值。它是那些希望在 Web 前端开发中获得 Haskell 级别类型安全和数学纯净性的开发者的首选。
 
 ### 2014
 #### Crystal
