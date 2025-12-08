@@ -1309,6 +1309,28 @@ radar-beta
     graticule polygon
 ```
 
+#### **1980 - VHDL (VHSIC Hardware Description Language)**
+
+-   **中二描述:** **【电路的创世双子 · 严谨之盾】** 它与 Verilog 共同掌控着硬件的创世法则。如果 Verilog 是灵活的剑，那 VHDL 就是严谨的盾。它的语法受到 Ada 语言的强烈影响，拥有**绝对的类型安全和并发处理能力**，是电子设计自动化 (EDA) 领域双璧之一。它不屑于模糊，只追求精确的、可验证的硬件蓝图。
+-   **必杀技:** 强类型硬件描述、并发进程建模、形式化验证支持
+-   **战力评价:** 在硬件设计领域是唯一的“神”，其防御力与 Verilog 互补。
+
+```mermaid
+---
+title: "1980 - VHDL"
+config:
+  themeVariables:
+    cScale0: "#004080"
+---
+radar-beta
+    axis Perf["【破坏力】极限出力"], Stab["【防御力】绝对境界"], Abst["【精神力】构筑术式"]
+    axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
+    curve a["VHDL"] { 100, 85, 20, 10, 50, 5 }
+    max 100
+    min 0
+    graticule polygon
+```
+
 #### **1981 - KRC (Kent Recursive Calculator)**
 
 - **中二描述:** **【递归的隐者】** 它是 Miranda 和 Haskell 的祖父。它证明了不需要复杂的语法，仅凭模式匹配和递归就能构建世界。它是纯函数式编程的一次静默的冥想。
@@ -2651,6 +2673,28 @@ radar-beta
     graticule polygon
 ```
 
+#### **2004 - GLSL (OpenGL Shading Language)**
+
+-   **中二描述:** **【光影的幻术师 · 跨界之灵】** 它是图形处理单元（GPU）的低语者，与微软的 HLSL 共享着光影的奥秘。它不处理逻辑，只处理光与色。成千上万个核心同时吟唱它的咒语，编织出虚幻的真实（3D 渲染）。它最大的特点是**跨平台**，能在所有支持 OpenGL 的设备上施展幻术。
+-   **必杀技:** 顶点着色、片段着色、并行向量计算、纹理采样
+-   **战力评价:** 破坏力（吞吐量）神级，但只能在 GPU 的结界内生效，调试地狱。
+
+```mermaid
+---
+title: "2004 - GLSL"
+config:
+  themeVariables:
+    cScale0: "#800080"
+---
+radar-beta
+    axis Perf["【破坏力】极限出力"], Stab["【防御力】绝对境界"], Abst["【精神力】构筑术式"]
+    axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
+    curve a["GLSL"] { 100, 40, 50, 20, 60, 20 }
+    max 100
+    min 0
+    graticule polygon
+```
+
 #### **2005 - F#**
 
 - **中二描述:** **【微软的智者】** OCaml 在 .NET 平台上的转生。它证明了在工业级平台上也能进行优雅的函数式编程。它是 C# 的智慧源泉，许多 C# 的新特性都是从它这里“借”去的。
@@ -2903,28 +2947,6 @@ radar-beta
     graticule polygon
 ```
 
-#### **2009 - Go (Modern / 1.22+)**
-
-- **中二描述:** **【云端的工程兵】** 它是 Google 的意志体现。它鄙视一切花哨的魔法，拒绝复杂的抽象。它用最简单的工具（Goroutine, Channel）构建出支撑全球互联网的云端大厦。它是实用主义的巅峰，它告诉你：无聊的代码才是好代码。
-- **完全体修正:** 精神力下调至 40（虽有了泛型，但依然简陋），敏捷度上调至 85（因为简单，所以写得快）。
-- **必杀技:** Goroutine、显式错误处理、极速编译
-
-```mermaid
----
-title: "2009 - Go (Modern)"
-config:
-  themeVariables:
-    cScale0: "#00ADD8"
----
-radar-beta
-    axis Perf["【破坏力】极限出力"], Stab["【防御力】绝对境界"], Abst["【精神力】构筑术式"]
-    axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
-    curve a["Go (Modern)"] { 85, 70, 40, 85, 90, 85 }
-    max 100
-    min 0
-    graticule polygon
-```
-
 #### **2009 - CoffeeScript**
 
 - **中二描述:** **【昙花一现的糖】** 它为了拯救被 JavaScript 丑陋语法折磨的灵魂而生。它把 Ruby/Python 的优雅语法糖撒在了 JS 上。它曾红极一时，但当 JS 本身进化（ES6）吸收了它的精华后，它便微笑着消散了。
@@ -2943,6 +2965,28 @@ radar-beta
   
     %% CoffeeScript: 同JS, 同JS, 抽象好, 写得快, 已死, 易
     curve a["CoffeeScript"] { 60, 20, 60, 95, 50, 80 }
+    max 100
+    min 0
+    graticule polygon
+```
+
+#### **2009 - Go (Modern / 1.22+)**
+
+- **中二描述:** **【云端的工程兵】** 它是 Google 的意志体现。它鄙视一切花哨的魔法，拒绝复杂的抽象。它用最简单的工具（Goroutine, Channel）构建出支撑全球互联网的云端大厦。它是实用主义的巅峰，它告诉你：无聊的代码才是好代码。
+- **完全体修正:** 精神力下调至 40（虽有了泛型，但依然简陋），敏捷度上调至 85（因为简单，所以写得快）。
+- **必杀技:** Goroutine、显式错误处理、极速编译
+
+```mermaid
+---
+title: "2009 - Go (Modern)"
+config:
+  themeVariables:
+    cScale0: "#00ADD8"
+---
+radar-beta
+    axis Perf["【破坏力】极限出力"], Stab["【防御力】绝对境界"], Abst["【精神力】构筑术式"]
+    axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
+    curve a["Go (Modern)"] { 85, 70, 40, 85, 90, 85 }
     max 100
     min 0
     graticule polygon
