@@ -2535,25 +2535,25 @@ radar-beta
     graticule polygon
 ```
 
-### **2002 - HLSL & GLSL (2004)**
+### **2002 - HLSL (High Level Shading Language)**
 
-- **中二描述:** **【光影的幻术师】** 它们是显卡（GPU）的低语者。它们不处理逻辑，只处理光与色。成千上万个核心同时吟唱它们的咒语，编织出虚幻的真实（3D渲染）。
-- **必杀技:** 并行向量计算、光照模型
-- **战力评价:** 破坏力（吞吐量）神级，但只能在 GPU 的结界内生效。
+- **中二描述:** **【DirectX 的光影使者】** 微软为 DirectX 9 锻造的第一把 GPU 魔杖。它让程序员第一次能用类 C 语言直接编写顶点和像素着色器，而不再需要手写汇编指令。它是现代图形编程的开端，开启了可编程渲染管线的时代。在它诞生之前，3D 图形只能依赖固定管线；在它诞生之后，艺术家和程序员获得了操控光影的绝对自由。
+- **必杀技:** 顶点着色器 (Vertex Shader)、像素着色器 (Pixel Shader)、语义绑定 (Semantics)
+- **战力评价:** 破坏力（GPU 吞吐量）神级，但只能在 DirectX 的结界内生效。调试极其困难（黑盒运行），易崩溃（驱动兼容性），但一旦掌握便能创造视觉奇迹。
 
 ```mermaid
 ---
-title: "2002 - HLSL/GLSL"
+title: "2002 - HLSL"
 config:
   themeVariables:
-    cScale0: "#555555"
+    cScale0: "#107C10"
 ---
 radar-beta
     axis Perf["【破坏力】极限出力"], Stab["【防御力】绝对境界"], Abst["【精神力】构筑术式"]
     axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
-  
-    %% Shaders: GPU神级, 易崩, 抽象专一, 调试地狱, 图形生态, 难
-    curve a["HLSL/GLSL"] { 100, 40, 50, 20, 60, 20 }
+    
+    %% HLSL: GPU神级, 易崩, 抽象专一, 调试地狱, DirectX生态, 难
+    curve a["HLSL"] { 100, 40, 50, 20, 70, 20 }
     max 100
     min 0
     graticule polygon
