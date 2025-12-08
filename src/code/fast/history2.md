@@ -853,7 +853,7 @@ radar-beta
     axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
   
     %% SQL: 引擎优化快, ACID稳, 集合抽象高, 查数快, 数据库垄断生态, 易学难精
-    curve a["SQL"] { 60, 60, 70, 80, 100, 70 }
+    curve a["SQL"] { 60, 60, 70, 80, 70, 70 }
     max 100
     min 0
     graticule polygon
@@ -1512,7 +1512,7 @@ radar-beta
     axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
   
     %% MATLAB: 慢(解释), 稳, 矩阵抽象高, 工程效率高, 工程生态垄断, 易
-    curve a["MATLAB"] { 30, 70, 60, 80, 80, 75 }
+    curve a["MATLAB"] { 30, 70, 60, 80, 65, 75 }
     max 100
     min 0
     graticule polygon
@@ -1650,7 +1650,7 @@ radar-beta
     axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
   
     %% Erlang: 计算慢并发快, 永不宕机, 并发抽象神, 并发开发快, 电信/IM生态, 难(Prolog语法)
-    curve a["Erlang"] { 40, 85, 80, 70, 50, 20 }
+    curve a["Erlang"] { 40, 85, 80, 70, 40, 20 }
     max 100
     min 0
     graticule polygon
@@ -2113,7 +2113,7 @@ radar-beta
     axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
   
     %% R: 慢, 稳, 统计抽象高, 数据分析快, 统计生态垄断, 难(对程序员)
-    curve a["R"] { 15, 60, 70, 80, 80, 40 }
+    curve a["R"] { 15, 60, 70, 80, 65, 40 }
     max 100
     min 0
     graticule polygon
@@ -2553,7 +2553,7 @@ radar-beta
     axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
     
     %% HLSL: GPU神级, 易崩, 抽象专一, 调试地狱, DirectX生态, 难
-    curve a["HLSL"] { 100, 40, 50, 20, 70, 20 }
+    curve a["HLSL"] { 100, 40, 50, 20, 50, 20 }
     max 100
     min 0
     graticule polygon
@@ -2689,7 +2689,7 @@ config:
 radar-beta
     axis Perf["【破坏力】极限出力"], Stab["【防御力】绝对境界"], Abst["【精神力】构筑术式"]
     axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
-    curve a["GLSL"] { 100, 40, 50, 20, 60, 20 }
+    curve a["GLSL"] { 100, 40, 50, 20, 45, 20 }
     max 100
     min 0
     graticule polygon
@@ -2850,7 +2850,7 @@ radar-beta
     axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
   
     %% CUDA: 算力神, 易崩, 抽象低, 难写, AI垄断生态, 极难
-    curve a["CUDA"] { 100, 30, 20, 20, 90, 5 }
+    curve a["CUDA"] { 100, 30, 20, 20, 50, 5 }
     max 100
     min 0
     graticule polygon
@@ -3265,7 +3265,7 @@ radar-beta
     axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
   
     %% Solidity: 极慢(Gas限制), 极不稳(坑多), 抽象低, 效率低, 区块链生态, 难(安全意识)
-    curve a["Solidity"] { 10, 10, 30, 40, 65, 40 }
+    curve a["Solidity"] { 10, 10, 30, 40, 45, 40 }
     max 100
     min 0
     graticule polygon
