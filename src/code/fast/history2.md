@@ -435,7 +435,7 @@ radar-beta
 title: "1963 - CPL"
 config:
   themeVariables:
-    cScale0: "#555555"
+    cScale0: "#FFFFFF"
 ---
 radar-beta
     axis Perf["【破坏力】极限出力"], Stab["【防御力】绝对境界"], Abst["【精神力】构筑术式"]
@@ -627,7 +627,7 @@ radar-beta
 title: "1967 - BCPL"
 config:
   themeVariables:
-    cScale0: "#FFFFFF"
+    cScale0: "#D3D3D3"
 ---
 radar-beta
     axis Perf["【破坏力】极限出力"], Stab["【防御力】绝对境界"], Abst["【精神力】构筑术式"]
