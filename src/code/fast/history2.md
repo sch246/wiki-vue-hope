@@ -1072,7 +1072,7 @@ radar-beta
     graticule polygon
 ```
 
-### **1976 - S Language**
+### **1976 - S**
 
 - **中二描述:** **【统计的初号机】** 贝尔实验室为了数据分析而创造的工具。它是 R 语言的前身。它不关心系统底层，只关心数据如何说话。
 - **必杀技:** 统计模型描述
@@ -1080,7 +1080,7 @@ radar-beta
 
 ```mermaid
 ---
-title: "1976 - S Language"
+title: "1976 - S"
 config:
   themeVariables:
     cScale0: "#84919E"
@@ -1090,7 +1090,7 @@ radar-beta
     axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
 
     %% S: 慢, 专精数据, 抽象中, 统计生态, 难
-    curve a["S Language"] { 20, 50, 60, 70, 40, 30 }
+    curve a["S"] { 20, 50, 60, 70, 40, 30 }
     max 100
     min 0
     graticule polygon
@@ -1992,7 +1992,7 @@ radar-beta
     graticule polygon
 ```
 
-### **1990 - J Language**
+### **1990 - J**
 
 - **中二描述:** **【APL的影之子】** 它是为了打破键盘的枷锁而生。它放弃了希腊字母，转而使用 ASCII 符号构建出更加晦涩的咒文。它是数组编程的极致，用两个字符就能表达“对所有元素求和并计算平均值”。它是数学家手中的黑魔法，凡人看一眼就会掉光 SAN 值。
 - **必杀技:** 隐式迭代、函数秩 (Rank)
@@ -2000,7 +2000,7 @@ radar-beta
 
 ```mermaid
 ---
-title: "1990 - J Language"
+title: "1990 - J"
 config:
   themeVariables:
     cScale0: "#808080"
@@ -2008,7 +2008,7 @@ config:
 radar-beta
     axis Perf["【破坏力】极限出力"], Stab["【防御力】绝对境界"], Abst["【精神力】构筑术式"]
     axis DevEff["【敏捷度】神之手"], Eco["【魔力值】无限书库"], Ease["【同调率】凡人亲和"]
-    curve a["J Language"] { 70, 20, 90, 80, 10, 2 }
+    curve a["J"] { 70, 20, 90, 80, 10, 2 }
     max 100
     min 0
     graticule polygon
