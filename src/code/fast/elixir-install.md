@@ -25,18 +25,24 @@ rm asdf-v0.18.0-linux-amd64.tar.gz
 - https://github.com/asdf-vm/asdf-erlang
 
 ```bash
-# 1. 添加插件
+# 添加插件
 asdf plugin add erlang https://github.com/asdf-vm/asdf-erlang.git
 
-# 2. 安装编译依赖
+# 安装编译依赖
 apt-get update
 apt-get -y install build-essential autoconf m4 libwxgtk3.2-dev libwxgtk-webview3.2-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop libxml2-utils libncurses-dev libssl-dev
 
-# 3. 安装 Erlang (耗时较长，约 10-20 分钟)
+# 查看有哪些版本
+asdf list all erlang | grep "28"
+
+# 安装 Erlang (耗时较长，约 10-20 分钟)
 # 安装了最新版 (此处为 28.3)
 asdf install erlang 28.3
 
-# 4. 设置全局版本
+# 可以在另一个窗口偷窥进度，具体填它弹出来的log位置 tail -f /root/.asdf/plugins/erlang/kerl-home/builds/asdf_28.3/otp_build_28.3.log
+
+
+# 设置全局版本
 asdf set --home erlang 28.3
 ```
 
@@ -46,16 +52,19 @@ asdf set --home erlang 28.3
 - https://github.com/asdf-vm/asdf-elixir
 
 ```bash
-# 1. 添加插件
+# 添加插件
 asdf plugin add elixir https://github.com/asdf-vm/asdf-elixir.git
 
-# 2. 安装 Elixir (选择匹配 Erlang 28 的版本)
+# 查看有哪些版本
+asdf list all elixir | grep "otp-28"
+
+# 安装 Elixir (选择匹配 Erlang 28 的版本)
 asdf install elixir 1.19.4-otp-28
 
-# 3. 设置全局版本
+# 设置全局版本
 asdf set --home elixir 1.19.4-otp-28
 
-# 4. 刷新 shims (确保命令生效)
+# 刷新 shims (确保命令生效)
 asdf reshim
 
 # 配置环境变量 (将 shims 加入 PATH)
@@ -72,13 +81,13 @@ source ~/.bashrc
 *这一步需要网络通畅*
 
 ```bash
-# 2. 安装包管理器 Hex
+# 安装包管理器 Hex
 mix local.hex --force
 
-# 3. 安装构建工具 Rebar
+# 安装构建工具 Rebar
 mix local.rebar --force
 
-# 4. 安装 Phoenix 项目生成器
+# 安装 Phoenix 项目生成器
 mix archive.install hex phx_new --force
 ```
 
