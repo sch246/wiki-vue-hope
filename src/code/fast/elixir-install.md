@@ -32,6 +32,9 @@ asdf plugin add erlang https://github.com/asdf-vm/asdf-erlang.git
 apt-get update
 apt-get -y install build-essential autoconf m4 libwxgtk3.2-dev libwxgtk-webview3.2-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop libxml2-utils libncurses-dev libssl-dev
 
+# 安装额外工具
+apt-get install inotify-tools
+
 # 查看有哪些版本
 asdf list all erlang | grep "28"
 
