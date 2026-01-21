@@ -5,4 +5,5 @@ export default sidebar({
   "/game/": "structure",
   "/math/": "structure",
   "/life/": "structure",
+  "/literature/": "structure",
 });
