@@ -23,6 +23,11 @@ export default navbar([
     link: "/life/"
   },
   {
+    text: "文学",
+    icon: "pepicons-pop:book",
+    link: "/literature/"
+  },
+  {
     text: "友情链接",
     icon: "pepicons-pop:chain",
     children: [
