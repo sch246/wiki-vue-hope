@@ -1,2 +1,12 @@
 // you can change config here
 $theme-color: #3ecfaa;
+
+/* 调整公告弹窗的宽度 */
+.vp-notice-wrapper {
+  /* 默认是 480px 左右，我们可以把它调大 */
+  width: 80%; /* 移动端自适应 */
+  max-width: 700px; /* PC 端最大宽度 */
+  
+  /* 如果你希望文字左对齐更整齐，可以加这一行 */
+  text-align: left;
+}
