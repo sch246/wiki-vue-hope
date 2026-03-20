@@ -47,9 +47,9 @@ do {
     my_greeting = "Hello";
 }
 
-// 任意表达式后都可以追加 with，用于捕获代数效应（如错误处理）：
-// 注意：Lie 没有内置的 try-catch，错误处理完全依赖处理器的双重返回
-read_file(path) with {
+// 任意表达式后都可以追加 with，用于在词法结尾倒装声明：
+// 注意：Lie 的 with 不会隐式污染环境，向底层穿透的依赖（如 on_error）在调用时依然必须被显式注入！
+read_file(path, on_error = on_error) with {
     fn on_error(err: Error) { print("Ignored"); continue(); }
 }
 ```
@@ -58,7 +58,8 @@ read_file(path) with {
 
 在主流语言中，数据和代码块的界限常常是混淆的。Lie 对三种括号进行了极其严格的语义正交划分：
 
-*   **复合数据 `()`**：非函数的复合数据均由圆括号表示。无论是位置模式的（如数组/元组），还是键值对模式的（如字典），**核心规则是：每次构造数据时，要么全是位置参数，要么全是字典参数，严禁混合。**
+*   **复合数据 `()`**：非函数的复合数据均由圆括号表示。无论是位置模式的（如数组/元组），还是键值对模式的（如字典），**核心极简规则：每次构造数据时，要么全是位置参数，要么全是字典参数，严禁混合。**
+    *   *消歧护城河：* 如果你想在字典中绑定并省略同名键值，**绝对不可直接写变量名**（那会退化成单一的位置参数），而必须使用原生的 `=name` 语法糖（它会在底层静态展开为 `name = name`）。这套基石死死守住了“位置”与“字典”的严格隔离墙。
 *   **串行执行块 `{}`**：创建一个内部表达式顺序执行的函数体。它隐式包含一个名为 `it` 的参数对象（代表传入的整个复合数据，而非特定字典）。在串行执行中，`it` 会在每次表达式执行后被不断覆盖为上一行表达式的计算结果。串行块的值即为最后一行的结果。
 *   **并行执行块 `[]`**：创建一个内部表达式完全独立、并发执行的函数体。每一行表达式都能抓取到同一个原始的 `it` 输入，不会逐行覆盖。并行块的值是所有表达式求值后收集而成的结果列表。
 
@@ -194,10 +195,10 @@ fn initialize_services() [
 
 ## 7. 显式注入与透明透传 (Explicit Injection & Transparent Forwarding)
 
-既然局部变量不会自动变成动态变量，如何满足下游函数的动态依赖？
-**答案：必须在函数调用点，通过强制命名传参的方式，显式注入。**
+既然局部变量不会自动变成动态变量，`with` 块也绝对不会因为“包含在内部”就去隐式污染环境（No Magic），那如何满足下游函数的动态依赖？
+**答案只有一个：必须在函数调用点，通过强制命名传参的方式，极其明确地显式注入。**
 
-一旦变量被显式注入到动态环境中，它将**自动穿透**所有未声明该依赖的中间函数，彻底解决“属性透传（Prop Drilling）”问题。
+一旦变量在调用点被显式注入到动态环境中，基于环境节点的代理链机制（参考第11节），它将**自动穿透**所有中间那些未声明该依赖的函数，彻底解决无聊的“属性透传（Prop Drilling）”噩梦。
 
 ```javascript
 // 底层：声明需要 theme
@@ -209,7 +210,7 @@ fn Dialog() { Button(); }
 // 顶层：注入谎言
 fn App() {
     theme = "Dark";
-    Dialog(theme = theme); // 语法糖可简写为 Dialog(theme)
+    Dialog(=theme); // =theme 是严格的字典参数缩写，等价于 Dialog(theme = theme)
 }
 ```
 
@@ -225,11 +226,12 @@ fn App() {
 
 这使得看似复杂的非局部跳转与状态机，变为了最纯净的两种单次调用返回形式。
 
-**核心性能妥协：有状态的连续体与 Actor 的由来**
-在传统的纯函数式续体（如 Scheme 的 Call/CC）中，保存续体会像做时间机器一样“快照”离开时的全部状态。但在 Lie 中，基于极端的性能考量，我们做出了一个决定性妥协：
-**当你通过续体回到一个节点时，它应该按照“当下”执行位置的实际状态继续，而不是曾经离开时的快照。**
+**核心性能妥协：有状态的连续体与 Actor 的必然诞生**
+在传统的纯函数式续体（如 Scheme 的 Call/CC）中，保存续体会像做时间机器一样“快照”离开时的全部状态（Snapshot Rollback）。但在 Lie 中，基于极端的性能考量，我们做出了一个决定性妥协：
+**当你通过续体回到一个节点时，它永远是按照该物理栈帧“当下”的实际状态继续，而不是曾经离开时的快照。**
 
-这意味着：**节点（闭包/上下文环境）是具有真实的物理状态的。** 它的局部变量会随着执行就地演进。这解释了为什么语言底层可以把闭包降级为栈上的可变赋值（见第10节），同时也铺垫了一个不可回避的并发问题——既然状态是就地改变的，多个并发流试图回到同一个有状态的处理器节点时就会产生竞争。**这就是为什么 Lie 必须在并发中引入 Actor 模型（即 `sync` 关键字，详见第12节）的根本原因。**
+这意味着：**上下文环境节点（闭包）是具有真实的、就地可变的物理状态的。** 它的局部变量会随着执行就地演进。这也就解释了为什么语言底层可以把闭包降级为栈上的可变赋值（见第10节）。
+更深远的意义在于，它铺垫了一个必然的并发推论——既然续体返回的节点状态是就地改变的，如果有多个并发流同时通过 `resume` 续体回到同一个带有状态的处理器节点，就自然会产生数据竞争。**因此，引入带有排他锁的 Actor 模型（即 `sync` 关键字，详见第12节），并不是为了并发强行打的补丁，而是这种“无快照续体传递”在遇到并行化时的物理必然侧影！**
 
 ```javascript
 /* Lines 123-140 omitted */
@@ -449,10 +451,11 @@ fn handle_post_order(request: Request): void {
     body = request.body.parse_json();
 
     create_order(
-        id    = body.user_id,
-        items = body.items,
-        db    = pg_pool.connect(),   // 唯一注入点
-        log   = logger,
+        id       = body.user_id,
+        items    = body.items,
+        db       = pg_pool.connect(),   // 唯一注入点，透传给所有深层调用
+        log      = logger,
+        on_error = on_error,            // 必须显式注入，with 块只是提供词法作用域
     ) with {
         // 代数效应：优雅地捕获任意深度的数据库异常
         fn on_error(err: DbError) {
@@ -490,16 +493,20 @@ print("Processed " + report.length + " records");
 展示多重分派 + 模式匹配如何让递归数据结构的处理变得极简，同时编译器自动完成尾递归优化：
 
 ```javascript
-// 用位置复合数据定义树节点
-fn Leaf(value: int): Tree                           { (tag = "leaf", value) }
-fn Node(left: Tree, value: int, right: Tree): Tree  { (tag = "node", left, value, right) }
+// 用字典复合数据定义树节点，直接使用 = 等价绑定缩写
+fn Leaf(value: int): Tree                           { (tag = "leaf", =value) }
+fn Node(left: Tree, value: int, right: Tree): Tree  { (tag = "node", =left, =value, =right) }
 
-// 多重分派：编译器根据 tree 的 tag 类型路由到正确的分支
-fn sum(tree: Leaf): int  { tree.value }
-fn sum(tree: Node): int  { sum(tree.left) + tree.value + sum(tree.right) }
+// 多重分派闭包：直接对传入的复合数据进行模式匹配！彻底消灭无意义的类型签名耦合
+sum = {
+    (tag = "leaf", value: int)                           -> { value }
+    (tag = "node", left: Tree, value: int, right: Tree)  -> { sum(left) + value + sum(right) }
+};
 
-fn depth(tree: Leaf): int { 1 }
-fn depth(tree: Node): int { 1 + max(depth(tree.left), depth(tree.right)) }
+depth = {
+    (tag = "leaf")                                       -> { 1 }
+    (tag = "node", =left, =right)                        -> { 1 + max(depth(left), depth(right)) }
+};
 
 // 使用 >> 组合出"先求和再格式化"的复合函数，结合位置闭包 \0
 describe = sum >> \( "Total: " + \0.to_string() );
@@ -533,12 +540,12 @@ fn enrich_fast(profile: Profile, api: HttpClient) {
     };
 }
 
-// 批量获取用户（并行数组映射 + with 统一错误处理）
+// 批量获取用户（并行映射数组 + with 统一容错）
 fn batch_fetch(ids: List) {
     ids
-        // 对数组进行并发映射
-        .map_parallel([ 
-            fetch_user_profile(id = \0) ?> enrich_fast;
+        // map 接收一个 [] 并发块作为闭包参数，自然实现了对每个元素的并发映射！
+        .map([ 
+            fetch_user_profile(id = \0, on_error = on_error) ?> enrich_fast;
         ] with {
             fn on_error(err: HttpError) {
                 print("Skipped: " + err.url);
@@ -640,8 +647,8 @@ fn test_checkout() {
 ```javascript
 fn collect_metrics(sources: List) {
     do [
-        // 并发发起所有采集请求
-        sources.map([ poll(url = \0) ]);
+        // 并发发起所有采集请求。把 report 和 on_error 显式注入到底层 poll 流程
+        sources.map([ poll(url = \0, report = report, on_error = on_error) ]);
     ] with {
         dashboard = (cpu = 0.0, mem = 0.0, count = 0);
 
@@ -739,28 +746,32 @@ fn main() {
 
 ```javascript
 fn map_reduce(data: List, mapper: any -> any, reducer: any -> any) {
-    // Phase 1: 并发 Map
-    mapped = data.map_parallel([ mapper(\0) ]);
+    // Phase 1: 并发 Map。向 map 传入 [] 并发块
+    mapped = data.map([ mapper(\0) ]);
 
     // Phase 2: 扁平化并按 key 分组
     grouped = mapped.flatten().group_by(\.key);
 
     // Phase 3: 并行 Reduce
-    grouped.keys.map_parallel([
-        key = \0;
-        values = grouped.get(key);
-        // 使用 UFCS 链式处理 values
-        (key, result = values.map(\.value).reduce(reducer))
+    grouped.keys.map([
+        // 注意：外层是 [] 并发映射，但对于每个元素的处理逻辑自身必须在串行块 {} 内！
+        do {
+            key = \0;
+            values = grouped.get(key);
+            // 使用 =key 字典赋值简写，保持与复合数据规则的严密一致
+            (=key, result = values.map(\.value).reduce(reducer))
+        }
     ]);
 }
 
 fn word_count(texts: List): List {
     map_reduce(
-        data    = texts,
+        data     = texts,
         // 函数复合：先切分，再映射为键值对复合数据
-        mapper  = \.split(" ") >> \.map(\( (key = \0, value = 1) )),
+        mapper   = \.split(" ") >> \.map(\( (key = \0, value = 1) )),
         // 极简规约：两值相加
-        reducer = \( \0 + \1 )
+        reducer  = \( \0 + \1 ),
+        on_error = on_error       // 理所应当的显式注入
     ) with {
         fn on_error(err: Error): List {
             print("Skipped bad chunk: " + err.msg);
