@@ -167,29 +167,31 @@ db = load_config() ?> connect() ?> init_tables();
 在 Lie 中，凡是涉及代码块 `{}` 的地方，都可以直接无缝替换为 `[]` 并行块。这就意味着语言底层统一了串并行的概念规则：
 *   **立即执行**：`do {}` 立即执行串行块，`do []` 立即执行并行块。
 *   **函数声明**：`fn foo() {}` 声明串行函数体，`fn foo() []` 声明并行函数体。
-*   **参数传递**：任何能接收 `{}` 的函数（如控制流或基于高阶函数的 for 循环），都可以同样接收 `[]`。
+
+**关于集合与并发的哲学解答：`map` 与 `for` 的分工**
+在遍历集合时，“对集合元素的并发迭代”与“单个元素处理逻辑的内部并发”是两个不同层面的概念。
+Lie 标准库对这两者做出了极其克制且优雅的语义约定：
+*   **`for` 默认是串行驱动的**。它意味着按顺序走完每个元素。
+*   **`map` 默认是并行驱动的！** （Lie 中没有底层的循环关键字只有递归，所谓的 map 本质是一个利用轻量级协程向外辐射的并发分发器）。
+
+如果遇到“集合元素并发映射”+“每个元素的处理逻辑自身需要并发”，你只需要将并行的 `map` 和并行的 `[]` 结合起来即可，反之亦然。
 
 ```javascript
-// 假设 for 就是一个普通的可重载函数（此处展示为中缀形式 urls for）
+// 假设 download 是个极其耗时的函数
 
-// 串行下载（按顺序一个一个下）
-urls for {
-    download(it);
+// 1. 完全串行：串行遍历，串行执行
+urls for { download(it) }
+
+// 2. 宏观并发，微观串行：同时发起三个下载连线，但单条连线内顺序执行
+urls map {
+    tmp = download(it);
+    save(tmp);
 }
 
-// 并行下载（同时发起三个下载请求！）
-// 差别仅仅在于传入 for 的 Lambda 体变成了 [] 并行块
-urls for [
-    download(it);
-] with {
-    // 追加 with 捕获这批并发任务可能产生的统取代数效应（错误）
-    fn on_error(e) { log(e); }
-}
-
-// 函数本身也可以直接声明为并行体
-fn initialize_services() [
-    start_db();
-    start_redis();
+// 3. 宏观串行，微观并发：按序处理各个用户，但处理单个用户时，并发请求他的多种信息
+users for [
+    fetch_avatar(it);
+    fetch_orders(it);
 ]
 ```
 
@@ -543,10 +545,11 @@ fn enrich_fast(profile: Profile, api: HttpClient) {
 // 批量获取用户（并行映射数组 + with 统一容错）
 fn batch_fetch(ids: List) {
     ids
-        // map 接收一个 [] 并发块作为闭包参数，自然实现了对每个元素的并发映射！
-        .map([ 
+        // map 自带宏观并发辐射语义！
+        // 传入一个 {} 串行闭包，意思是：同时并发处理所有用户，但在单个用户的处理路线上，严格遵循先 fetch 再 enrich 的顺序。
+        .map({ 
             fetch_user_profile(id = \0, on_error = on_error) ?> enrich_fast;
-        ] with {
+        } with {
             fn on_error(err: HttpError) {
                 print("Skipped: " + err.url);
                 continue(null);  // 恢复执行，当前错误项返回 null
@@ -646,10 +649,9 @@ fn test_checkout() {
 
 ```javascript
 fn collect_metrics(sources: List) {
-    do [
-        // 并发发起所有采集请求。把 report 和 on_error 显式注入到底层 poll 流程
-        sources.map([ poll(url = \0, report = report, on_error = on_error) ]);
-    ] with {
+    // map 本身就是并发分发器，因此外部无需 do []。
+    // 我们仅仅需要对每个 source 执行串行的 {} 逻辑（这里只有一行 poll）。
+    sources.map({ poll(url = \0, report = report, on_error = on_error) }) with {
         dashboard = (cpu = 0.0, mem = 0.0, count = 0);
 
         // sync fn 保证：即使百个数据源同时回报，状态更新依然严格串行
@@ -746,22 +748,19 @@ fn main() {
 
 ```javascript
 fn map_reduce(data: List, mapper: any -> any, reducer: any -> any) {
-    // Phase 1: 并发 Map。向 map 传入 [] 并发块
-    mapped = data.map([ mapper(\0) ]);
+    // Phase 1: 并发 Map。map 默认是并行的
+    mapped = data.map({ mapper(\0) });
 
     // Phase 2: 扁平化并按 key 分组
     grouped = mapped.flatten().group_by(\.key);
 
-    // Phase 3: 并行 Reduce
-    grouped.keys.map([
-        // 注意：外层是 [] 并发映射，但对于每个元素的处理逻辑自身必须在串行块 {} 内！
-        do {
-            key = \0;
-            values = grouped.get(key);
-            // 使用 =key 字典赋值简写，保持与复合数据规则的严密一致
-            (=key, result = values.map(\.value).reduce(reducer))
-        }
-    ]);
+    // Phase 3: 并行 Reduce。map 宏观辐射，内部 {} 确保取值和化简串行执行
+    grouped.keys.map({
+        key = \0;
+        values = grouped.get(key);
+        // 使用 =key 字典赋值简写
+        (=key, result = values.map(\.value).reduce(reducer))
+    });
 }
 
 fn word_count(texts: List): List {
@@ -785,7 +784,8 @@ fn word_count(texts: List): List {
 fn main() {
     texts = load_text_files("/corpus/");
     top_words = word_count(texts);
-    top_words.map(\( print(\0.key + ": " + \0.result.to_string()) ));
+    // 打印是有序的副作用副作用，必须使用串行驱动的 for，否则输出会乱序！
+    top_words.for(\( print(\0.key + ": " + \0.result.to_string()) ));
 }
 ```
 
