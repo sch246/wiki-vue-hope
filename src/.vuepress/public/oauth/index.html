@@ -33,7 +33,10 @@ footer{margin-top:3.4em;padding-top:1.2em;border-top:1px solid #e5e7eb;color:#6b
 </header>
 
 <h2>应用用途</h2>
-<p><code>sch246-drive</code> 是一个<strong>只在开发者本人电脑上运行</strong>的命令行文件备份工具。它把本机的普通文件（文档、笔记、代码、图片素材等）上传到<strong>使用者本人的 Google Drive</strong> 作为备份，并在需要时从同一个 Drive 下载取回。</p>
+<p style="background:#f0f7f4;border-left:3px solid #4ec9b0;padding:12px 16px;border-radius:6px;margin:1em 0">
+<strong>一句话说明：</strong>本应用用 <code>https://www.googleapis.com/auth/drive</code> 这一个权限，仅仅做两件事——把本机文件上传到<strong>本人自己的</strong> Google Drive 备份，以及从本人自己的 Google Drive 下载取回。除此之外不使用 Google API 做任何事。
+</p>
+<p><code>sch246-drive</code> 是一个<strong>只在开发者本人电脑上运行</strong>的命令行文件备份工具。它把本机的普通文件（文档、笔记、代码、数据文件等）上传到<strong>使用者本人的 Google Drive</strong> 作为备份，并在需要时从同一个 Drive 下载取回。</p>
 <p>它<strong>不是</strong>面向公众的应用：不注册用户、不提供网站或在线服务、没有任何后端服务器。<strong>使用者与开发者是同一个人</strong>，该 OAuth 客户端仅用于给个人备份脚本换取访问自己 Drive 的授权。</p>
 
 <div class="two">
@@ -50,7 +53,7 @@ footer{margin-top:3.4em;padding-top:1.2em;border-top:1px solid #e5e7eb;color:#6b
     <h3>它不会做什么</h3>
     <ul>
       <li>不生成任何文字、图像或视频</li>
-      <li>不编辑、合成、修改任何内容</li>
+      <li>不编辑、合成、转换任何内容</li>
       <li>不提供任何 AI / 生成式功能</li>
       <li>不访问他人的 Drive 或其他 Google 服务</li>
       <li>不对外提供服务，不收集用户数据</li>
@@ -76,6 +79,16 @@ footer{margin-top:3.4em;padding-top:1.2em;border-top:1px solid #e5e7eb;color:#6b
 <p style="font-size:14px;margin-bottom:0">对应政策：<a href="https://support.google.com/cloud/answer/13804963">Google 关于 AI 生成的非自愿私密影像（AI NCII）的政策</a> · <a href="https://developers.google.com/terms">Google APIs 服务条款</a></p>
 </div>
 
+<h2>有限使用（Limited Use）声明</h2>
+<p>本应用对 Google API 数据的使用遵守 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API 服务用户数据政策</a>，包括其有限使用（Limited Use）要求：</p>
+<ul>
+  <li>仅用于提供本页「会做什么」列出的、对使用者本人可见的文件备份与取回功能；</li>
+  <li>不将 Google 用户数据传输给任何第三方（除为提供功能所必需、为安全目的、或法律要求外）；</li>
+  <li>不使用 Google 用户数据投放广告；</li>
+  <li>不允许人工读取 Google 用户数据（除使用者明确同意、出于安全目的或法律要求外）；</li>
+  <li>不使用 Google 用户数据训练、改进或开发任何机器学习或人工智能模型。</li>
+</ul>
+
 <h2>如何撤销授权</h2>
 <p>随时可在 <a href="https://myaccount.google.com/permissions">Google 账号 → 安全性 → 第三方应用和服务的访问权限</a> 中移除 sch246-drive，移除后本应用立即失去访问能力。</p>
 
@@ -84,6 +97,9 @@ footer{margin-top:3.4em;padding-top:1.2em;border-top:1px solid #e5e7eb;color:#6b
   <li><a href="privacy.html">隐私政策 / Privacy Policy</a></li>
   <li><a href="terms.html">服务条款 / Terms of Service</a></li>
 </ul>
+
+<h2>Summary (English)</h2>
+<p><em>sch246-drive is a private, single-user command-line tool. It requests exactly one OAuth scope (<code>https://www.googleapis.com/auth/drive</code>) and uses it only to copy the owner's local files to the owner's own Google Drive and to download them back. It runs entirely on the owner's machine, has no backend server, collects no data, is not distributed or offered to the public, and has <strong>no generative or AI capability of any kind</strong> — it cannot create, edit, synthesise or process any media. The developer commits not to use Google APIs for AI-generated non-consensual intimate imagery (AI NCII) or any other content violating third-party rights, in line with the <a href="https://developers.google.com/terms">Google APIs Terms of Service</a> and <a href="https://support.google.com/cloud/answer/13804963">Google's AI NCII policy</a>.</em></p>
 
 <footer>
   联系方式：fmyzc233@gmail.com · 最后更新 2026-11-19<br>
