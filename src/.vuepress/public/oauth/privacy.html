@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>隐私政策 — rclone-drive</title>
+<style>body{max-width:720px;margin:60px auto;padding:0 20px;font:16px/1.75 -apple-system,"Segoe UI","Noto Sans CJK SC",sans-serif;color:#1f2328}h1{font-size:26px;margin-bottom:.2em}h2{font-size:18px;margin-top:1.8em;border-bottom:1px solid #e5e7eb;padding-bottom:.3em}code{background:#f3f4f6;padding:2px 5px;border-radius:4px;font-size:14px}a{color:#0969da}</style>
+</head><body>
+<h1>隐私政策 / Privacy Policy</h1>
+<p><em>最后更新：2026-11-19 · Last updated: 2026-11-19</em></p>
+
+<h2>1. 适用范围</h2>
+<p>本政策适用于 <code>rclone-drive</code>（下称“本应用”）。本应用是部署在用户本机的开源命令行工具 <a href="https://rclone.org">rclone</a> 的个人配置，<strong>不运营任何服务器、不提供多用户服务、不收集任何用户数据</strong>。</p>
+
+<h2>2. 我们收集什么</h2>
+<p><strong>不收集任何个人信息。</strong>本应用没有后端服务，没有数据库，没有分析埋点，没有遥测。它不在任何第三方服务器上存储、传输或处理你的数据。</p>
+
+<h2>3. Google 用户数据的处理</h2>
+<p>经你授权后，本应用通过 Google Drive API 访问你本人的 Drive 文件，权限范围为 <code>https://www.googleapis.com/auth/drive</code>。具体用途：</p>
+<ul>
+<li>列出与下载你 Drive 中的文件；</li>
+<li>上传你自己生成的文件到你的 Drive；</li>
+<li>在你的 Drive 中创建目录。</li>
+</ul>
+<p>上述操作全部在你的本机与 Google 服务器之间直接进行。<strong>不会</strong>将文件内容、文件名列表或元数据发送给任何其他人或服务。</p>
+
+<h2>4. 凭据存储</h2>
+<p>OAuth 访问令牌与刷新令牌保存在本机文件 <code>~/.config/rclone/rclone.conf</code>（权限 600，仅本机当前用户可读）。凭据不经过网络上传，不由本应用以外的任何一方持有。</p>
+<p>你可以随时在 <a href="https://myaccount.google.com/permissions">Google 账号 → 安全性 → 第三方应用与服务的访问权限</a> 中撤销授权。撤销后本应用立即失去访问能力。</p>
+
+<h2>5. 数据共享</h2>
+<p>不向任何第三方出售、出租、共享或转让你的数据。不存在广告、追踪或画像行为。</p>
+
+<h2>6. 数据保留与删除</h2>
+<p>本应用不保留任何云端数据。你本机产生的配置文件与日志可在任意时刻直接删除：<code>rm -rf ~/.config/rclone</code>。已上传到 Drive 的文件由你自己在 Drive 中管理。</p>
+
+<h2>7. 儿童隐私</h2>
+<p>本应用不面向 13 岁以下儿童，也不会有意收集其信息（实际上不收集任何人的信息）。</p>
+
+<h2>8. 政策变更</h2>
+<p>如本政策发生变更，将更新本页顶部的日期。由于本应用为个人自用工具，变更通常仅涉及措辞澄清。</p>
+
+<h2>9. 联系方式</h2>
+<p>邮箱：fmyzc233@gmail.com</p>
+
+<hr style="margin:2.5em 0;border:0;border-top:1px solid #e5e7eb">
+<p style="font-size:14px;color:#6b7280"><strong>English summary.</strong> This is a private, single-user configuration of the open-source tool rclone. It runs entirely on the user's own machine, has no backend, and collects no personal data whatsoever. With the user's OAuth consent it accesses only the user's own Google Drive via <code>https://www.googleapis.com/auth/drive</code> to list, download and upload files. OAuth tokens are stored locally in <code>~/.config/rclone/rclone.conf</code>. No data is shared with, sold to, or transferred to any third party. Access can be revoked at any time at myaccount.google.com/permissions. Contact: fmyzc233@gmail.com.</p>
+</body></html>
