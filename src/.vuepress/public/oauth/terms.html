@@ -1,27 +1,46 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>服务条款 — rclone-drive</title>
-<style>body{max-width:720px;margin:60px auto;padding:0 20px;font:16px/1.75 -apple-system,"Segoe UI","Noto Sans CJK SC",sans-serif;color:#1f2328}h1{font-size:26px;margin-bottom:.2em}h2{font-size:18px;margin-top:1.8em;border-bottom:1px solid #e5e7eb;padding-bottom:.3em}code{background:#f3f4f6;padding:2px 5px;border-radius:4px;font-size:14px}a{color:#0969da}</style>
+<title>服务条款 · sch246-drive</title>
+<style>
+body{max-width:760px;margin:0 auto;padding:48px 20px 64px;font:16px/1.78 -apple-system,"Segoe UI","Noto Sans CJK SC",sans-serif;color:#1f2328}
+header{display:flex;align-items:center;gap:16px;margin-bottom:8px}
+header img{width:56px;height:56px;border-radius:13px;flex:none}
+h1{font-size:26px;margin:0}
+.sub{color:#57606a;margin:2px 0 0;font-size:14px}
+h2{font-size:18px;margin-top:2.1em;padding-bottom:.32em;border-bottom:1px solid #e5e7eb}
+code{background:#f2f4f7;padding:2px 6px;border-radius:5px;font-size:14px}
+a{color:#0969da}ul{padding-left:1.3em}li{margin:.3em 0}
+footer{margin-top:3.2em;padding-top:1.2em;border-top:1px solid #e5e7eb;color:#6b7280;font-size:14px}
+</style>
 </head><body>
-<h1>服务条款 / Terms of Service</h1>
-<p><em>最后更新：2026-11-19</em></p>
+<header><img src="logo-512.png" alt="sch246-drive"><div><h1>服务条款 / Terms of Service</h1><p class="sub">sch246-drive · 最后更新 2026-11-19</p></div></header>
 
 <h2>1. 性质</h2>
-<p><code>rclone-drive</code> 是部署在用户本机的开源工具 <a href="https://rclone.org">rclone</a> 的个人 OAuth 客户端配置，仅供账号所有者本人使用，不向公众提供任何服务，不接受注册。</p>
+<p><code>sch246-drive</code> 是运行在开发者本人电脑上的开源工具 <a href="https://rclone.org">rclone</a> 的私有 OAuth 客户端配置。<strong>仅供开发者本人使用</strong>，不向公众提供服务，不接受注册，不提供任何在线功能。</p>
 
-<h2>2. 使用</h2>
-<p>本应用仅用于在用户本机与用户本人的 Google Drive 之间同步文件。使用者须遵守 <a href="https://developers.google.com/terms">Google APIs 服务条款</a> 与 <a href="https://policies.google.com/terms">Google 服务条款</a>。</p>
+<h2>2. 允许的用途</h2>
+<p>本应用仅用于在本机与使用者本人的 Google Drive 之间同步文件（上传备份、下载取回、创建目录）。不得用于：</p>
+<ul>
+  <li>访问他人的 Google Drive 或未经授权的账号；</li>
+  <li>分发、传播违法内容；</li>
+  <li>生成或传播 AI NCII（未经当事人同意的私密图像）或其他侵犯他人隐私的内容；本应用不具备生成图像的能力。</li>
+</ul>
 
-<h2>3. 无担保</h2>
-<p>本应用按“现状”提供，不附带任何明示或暗示的担保。文件同步的结果由使用者自行核验。</p>
+<h2>3. 遵守的规则</h2>
+<p>使用本应用须遵守 <a href="https://developers.google.com/terms">Google APIs 服务条款</a>、<a href="https://developers.google.com/terms/api-services-user-data-policy">Google API 服务用户数据政策</a> 与 <a href="https://policies.google.com/terms">Google 服务条款</a>。</p>
 
-<h2>4. 责任限制</h2>
+<h2>4. 无担保</h2>
+<p>本应用按“现状”提供，不附带任何明示或暗示的担保。文件同步结果由使用者自行核验。</p>
+
+<h2>5. 责任限制</h2>
 <p>在法律允许的最大范围内，作者不对因使用本应用导致的任何数据丢失、服务中断或间接损失承担责任。</p>
 
-<h2>5. 终止</h2>
-<p>使用者可随时在 <a href="https://myaccount.google.com/permissions">Google 账号权限页</a> 撤销授权，或在 <code>~/.config/rclone/</code> 中删除配置以终止使用。</p>
+<h2>6. 终止</h2>
+<p>使用者可随时在 <a href="https://myaccount.google.com/permissions">Google 账号权限页</a> 撤销授权，或删除 <code>~/.config/rclone/</code> 下的配置以终止使用。</p>
 
-<h2>6. 联系方式</h2>
+<h2>7. 联系方式</h2>
 <p>邮箱：fmyzc233@gmail.com</p>
+
+<footer><strong>English summary.</strong> sch246-drive is a private single-user OAuth client configuration for rclone. It is not a public service. It may only be used to sync files between the owner's own computer and the owner's own Google Drive, in compliance with Google's API Terms of Service and the Google API Services User Data Policy. It does not generate imagery and must not be used to create or distribute unlawful content or AI NCII. Provided as-is, without warranty. Contact: fmyzc233@gmail.com.</footer>
 </body></html>

@@ -1,32 +1,65 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>rclone-drive — 自用 Google Drive 客户端</title>
-<style>body{max-width:720px;margin:60px auto;padding:0 20px;font:16px/1.75 -apple-system,"Segoe UI","Noto Sans CJK SC",sans-serif;color:#1f2328}h1{font-size:26px;margin-bottom:.2em}h2{font-size:18px;margin-top:1.8em;border-bottom:1px solid #e5e7eb;padding-bottom:.3em}code{background:#f3f4f6;padding:2px 5px;border-radius:4px;font-size:14px}a{color:#0969da}</style>
+<title>sch246-drive · 个人 Google Drive 同步工具</title>
+<meta name="description" content="sch246-drive 是一个仅供个人使用的命令行文件同步工具，把本机文件备份到使用者本人的 Google Drive。">
+<style>
+body{max-width:760px;margin:0 auto;padding:48px 20px 64px;font:16px/1.78 -apple-system,"Segoe UI","Noto Sans CJK SC",sans-serif;color:#1f2328}
+header{display:flex;align-items:center;gap:18px;margin-bottom:8px}
+header img{width:76px;height:76px;border-radius:17px;flex:none}
+h1{font-size:30px;margin:0;letter-spacing:-.01em}
+.sub{color:#57606a;margin:2px 0 0;font-size:15px}
+h2{font-size:19px;margin-top:2.2em;padding-bottom:.34em;border-bottom:1px solid #e5e7eb}
+code{background:#f2f4f7;padding:2px 6px;border-radius:5px;font-size:14px}
+a{color:#0969da}
+ul{padding-left:1.3em}li{margin:.3em 0}
+.note{background:#f6f8fa;border-left:3px solid #4ec9b0;padding:12px 16px;border-radius:0 6px 6px 0;margin:1.2em 0}
+footer{margin-top:3.4em;padding-top:1.2em;border-top:1px solid #e5e7eb;color:#6b7280;font-size:14px}
+</style>
 </head><body>
-<h1>rclone-drive</h1>
-<p><em>A private, single-user Google Drive client based on <a href="https://rclone.org">rclone</a>.</em></p>
 
-<h2>这是什么</h2>
-<p><code>rclone-drive</code> 是一个<strong>仅供本人使用</strong>的桌面命令行工具配置。它把本机的文件备份与同步到本人自己的 Google Drive，不对外提供服务，也不注册其他用户。</p>
-<p>技术上它是 <a href="https://rclone.org/drive/">rclone</a> 开源软件的一个 OAuth 客户端实例。之所以自建客户端，是因为 rclone 内置的共享客户端 ID 将被 Google 逐步停用。</p>
+<header>
+  <img src="logo-512.png" alt="sch246-drive 徽标">
+  <div>
+    <h1>sch246-drive</h1>
+    <p class="sub">个人使用的 Google Drive 同步工具 · 应用名称：sch246-drive</p>
+  </div>
+</header>
 
-<h2>它请求哪些权限</h2>
-<p>只请求一个 Google Drive 范围：<code>https://www.googleapis.com/auth/drive</code>（读写本人 Drive 文件）。用于：</p>
+<h2>这个应用是做什么的</h2>
+<p><code>sch246-drive</code> 是一个<strong>只在开发者本人电脑上运行</strong>的命令行文件同步工具。它把本机生成的文件（主要是机器学习笔记本文件与生成的图片）备份到<strong>使用者本人的 Google Drive</strong>，并在需要时从同一个 Drive 取回这些文件。</p>
+<p>它不对公众开放，不注册用户，不提供网站或在线服务，也没有任何后台服务器。<strong>使用者与开发者是同一个人</strong>：该 OAuth 客户端仅用于给个人脚本换取访问自己 Drive 的授权。</p>
+
+<div class="note">技术上它是开源命令行工具 <a href="https://rclone.org/drive/">rclone</a> 的一个私有 OAuth 客户端配置。之所以自建客户端，是因为 rclone 内置的公共客户端 ID 将被 Google 逐步停用；功能与 scope 与 rclone 官方一致。</div>
+
+<h2>它请求哪些 Google 权限</h2>
+<p>只请求一个范围：<code>https://www.googleapis.com/auth/drive</code>（读写本人 Drive 中的文件）。具体用途：</p>
 <ul>
-<li>列出 / 下载本人 Drive 中的文件</li>
-<li>上传本机生成的文件（例如机器学习模型的 notebook 与输出图片）</li>
-<li>创建目录</li>
+  <li>列出并下载本人 Drive 中的文件</li>
+  <li>上传本机生成的文件到本人 Drive</li>
+  <li>在本人 Drive 中创建目录</li>
 </ul>
-<p>不读取 Gmail、日历、通讯录、照片或任何其他 Google 服务的数据。</p>
+<p>不读取 Gmail、日历、联系人、照片或任何其他 Google 服务；不访问他人的 Drive；不访问共享给本人的文件，除非本人明确指定路径。</p>
 
-<h2>数据去哪了</h2>
-<p>OAuth 凭据（refresh token）以明文保存在本机配置文件 <code>~/.config/rclone/rclone.conf</code> 中，不上传任何服务器。两端之间的传输全部由 Google 的 HTTPS 接口完成，不经过第三方中转。</p>
+<h2>数据如何使用</h2>
+<ul>
+  <li>文件内容仅在本机与 Google Drive 之间直接传输，<strong>不经过任何第三方服务器</strong>。</li>
+  <li>OAuth 凭据保存在本机配置文件 <code>~/.config/rclone/rclone.conf</code>（权限 600），不上传。</li>
+  <li>不收集统计、不做用户画像、<strong>不用于广告</strong>、<strong>不用于训练任何 AI 模型</strong>。</li>
+  <li><strong>本应用不使用 Google API 生成或处理 AI NCII</strong>（未经当事人同意的私密图像），也不具备生成图像的能力；它只做文件搬运。</li>
+</ul>
+
+<h2>如何撤销授权</h2>
+<p>随时可在 <a href="https://myaccount.google.com/permissions">Google 账号 → 安全性 → 第三方应用和服务的访问权限</a> 中移除 sch246-drive，移除后本应用立即失去访问能力。</p>
 
 <h2>相关文档</h2>
 <ul>
-<li><a href="privacy.html">隐私政策 / Privacy Policy</a></li>
-<li><a href="terms.html">服务条款 / Terms of Service</a></li>
+  <li><a href="privacy.html">隐私政策 / Privacy Policy</a></li>
+  <li><a href="terms.html">服务条款 / Terms of Service</a></li>
 </ul>
-<p style="margin-top:3em;color:#6b7280;font-size:14px">联系方式：fmyzc233@gmail.com</p>
+
+<footer>
+  联系方式：fmyzc233@gmail.com · 最后更新 2026-11-19<br>
+  <em>sch246-drive is a private, single-user command-line tool for syncing files with the owner's own Google Drive. It requests only the Google Drive scope, runs entirely on the owner's machine, has no backend, and does not use Google APIs to create or process AI-generated non-consensual intimate imagery.</em>
+</footer>
 </body></html>
